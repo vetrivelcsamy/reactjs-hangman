@@ -1,13 +1,69 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, "Poppins", "Segoe UI", "Roboto", "Oxygen",
+		"Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	background: #0c0c13;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+/*custom css*/
+
+.Hangman img {
+	width: 200px;
+	height: 350px;
+}
+
+.Hangman h1 {
+	font-size: 3rem;
+	font-weight: 400;
+	padding-top: 0;
+	color: #158cee;
+}
+
+.Hangman-word {
+	letter-spacing: 1em;
+	margin: 0.4em -1em 0.2em 0;
+	font-size: 1.5rem;
+	color: #07ffc9;
+}
+
+.Hangman-btns {
+	text-align: center;
+	color: #158cee;
+	display: inline-block;
+	font-size: 1.5rem;
+}
+.Hangman button {
+	border: none;
+	font-family: inherit;
+	font-size: 2.5rem;
+	cursor: pointer;
+	width: 5rem;
+	margin: 18px 8px 10px 13px;
+	letter-spacing: 0px;
+	outline: none;
+	background: #07ffc9;
+	color: rgb(0, 0, 0);
+	border-radius: 10px;
+	padding-top: 15px;
+}
+
+.Hangman-reset {
+	color: #d6dfdf;
+	box-shadow: 0 6px #07ffc9 !important;
+	width: 10rem !important;
+	background-color: #07ffc9;
+	border-color: #07ffc9;
+	box-shadow: 0 0 40px #07ffc9;
+}
+.Hangman button:hover {
+	background-color: #fffffa;
+}
+
+.Hangman button:disabled {
+	color: #d6dfdf;
+	background-color: #ff1100;
+	border-color: #ff1100;
+	box-shadow: 0 0 40px #ff1100;
 }
