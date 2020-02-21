@@ -1,8 +1,8 @@
 var PROGRAMING_LANG = [
 	"python",
 	"javascript",
-	"mongodb",
-	"json",
+	"dart",
+	"typescript",
 	"java",
 	"html",
 	"css",
