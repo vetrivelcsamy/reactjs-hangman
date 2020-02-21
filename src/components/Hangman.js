@@ -9,6 +9,7 @@ import step4 from "./images/4.jpg";
 import step5 from "./images/5.jpg";
 import step6 from "./images/6.jpg";
 
+let gameStat;
 class Hangman extends Component {
 	static defaultProps = {
 		maxWrong: 6,
@@ -17,20 +18,41 @@ class Hangman extends Component {
 
 	constructor(props) {
 		super(props);
-		this.state = { mistake: 0, guessed: new Set(), answer: randomWord() };
+		this.state = {
+			mistake: 0,
+			guessed: new Set(),
+			answer: randomWord(),
+		};
 		this.handleGuess = this.handleGuess.bind(this);
+		this.keyPress = this.keyPress.bind(this);
+		window.addEventListener('keydown', this.keyPress);
 	}
 
 	guessedWord() {
 		return this.state.answer.split("").map(bingo => (this.state.guessed.has(bingo) ? bingo : "_"));
 	}
 
-	handleGuess(evt) {
-		let letter = evt.target.value;
+	handleGuess(value) {
+		let letter = value;
 		this.setState(st => ({
 			guessed: st.guessed.add(letter),
 			mistake: st.mistake + (st.answer.includes(letter) ? 0 : 1)
 		}));
+	}
+
+	keyPress(event) {
+		if(gameStat === 'YOU WON' || gameStat === "YOU LOST") {
+			if(event.keyCode === 8 || event.keyCode === 13 || event.keyCode === 32) {
+				this.resetButton();
+			}
+		}
+		else if((event.keyCode >= 65 && event.keyCode <= 90) || (event.keyCode >= 97 && event.keyCode <= 122)) {
+			this.handleGuess(event.key);
+		}
+		else if(event.keyCode === 8 || event.keyCode === 13 || event.keyCode === 32) {
+			this.resetButton();
+		}
+		else {}
 	}
 
 	generateButtons() {
@@ -38,7 +60,7 @@ class Hangman extends Component {
 			<button
 				key={letter}
 				value={letter}
-				onClick={this.handleGuess}
+				onClick={(e) => this.handleGuess(e.target.value)}
 				disabled={this.state.guessed.has(letter)}
 			>
 				{letter}
@@ -58,7 +80,7 @@ class Hangman extends Component {
 		const gameOver = this.state.mistake >= this.props.maxWrong;
 		const altText = `${this.state.mistake}/${this.props.maxWrong} wrong guesses`;
 		const isWinner = this.guessedWord().join("") === this.state.answer;
-		let gameStat = this.generateButtons();
+		gameStat = this.generateButtons();
 		if (isWinner) {
 			gameStat = "YOU WON";
 		}
