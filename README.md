@@ -1,4 +1,5 @@
- # ReactJS Hangman Game 
+foo 
+# ReactJS Hangman Game 
  
  If you'd like to contribute, help me close issues.
   
