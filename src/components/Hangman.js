@@ -43,6 +43,15 @@ class Hangman extends Component {
 	}
 
 	keyPress(event) {
+		/**
+		 * 8 = backspace
+		 * 13 = enter
+		 * 32 = space
+		 * 65 = A (Capital)
+		 * 90 = Z (Capital)
+		 * 97 = a (Small)
+		 * 122 = z (Small)
+		 */
 		if (gameStat === 'YOU WON' || gameStat === 'YOU LOST') {
 			if (
 				event.keyCode === 8 ||
