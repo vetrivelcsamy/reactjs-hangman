@@ -1,19 +1,19 @@
-import React, { Component } from "react";
-import { randomWord } from "./words";
+import React, { Component } from 'react';
+import { randomWord } from './words';
 
-import step0 from "./images/0.jpg";
-import step1 from "./images/1.jpg";
-import step2 from "./images/2.jpg";
-import step3 from "./images/3.jpg";
-import step4 from "./images/4.jpg";
-import step5 from "./images/5.jpg";
-import step6 from "./images/6.jpg";
+import step0 from './images/0.jpg';
+import step1 from './images/1.jpg';
+import step2 from './images/2.jpg';
+import step3 from './images/3.jpg';
+import step4 from './images/4.jpg';
+import step5 from './images/5.jpg';
+import step6 from './images/6.jpg';
 
 let gameStat;
 class Hangman extends Component {
 	static defaultProps = {
 		maxWrong: 6,
-		images: [step0, step1, step2, step3, step4, step5, step6]
+		images: [step0, step1, step2, step3, step4, step5, step6],
 	};
 
 	constructor(props) {
@@ -29,34 +29,54 @@ class Hangman extends Component {
 	}
 
 	guessedWord() {
-		return this.state.answer.split("").map(bingo => (this.state.guessed.has(bingo) ? bingo : "_"));
+		return this.state.answer
+			.split('')
+			.map((bingo) => (this.state.guessed.has(bingo) ? bingo : '_'));
 	}
 
 	handleGuess(value) {
 		let letter = value;
-		this.setState(st => ({
+		this.setState((st) => ({
 			guessed: st.guessed.add(letter),
-			mistake: st.mistake + (st.answer.includes(letter) ? 0 : 1)
+			mistake: st.mistake + (st.answer.includes(letter) ? 0 : 1),
 		}));
 	}
 
 	keyPress(event) {
-		if(gameStat === 'YOU WON' || gameStat === "YOU LOST") {
-			if(event.keyCode === 8 || event.keyCode === 13 || event.keyCode === 32) {
+		/**
+		 * 8 = backspace
+		 * 13 = enter
+		 * 32 = space
+		 * 65 = A (Capital)
+		 * 90 = Z (Capital)
+		 * 97 = a (Small)
+		 * 122 = z (Small)
+		 */
+		if (gameStat === 'YOU WON' || gameStat === 'YOU LOST') {
+			if (
+				event.keyCode === 8 ||
+				event.keyCode === 13 ||
+				event.keyCode === 32
+			) {
 				this.resetButton();
 			}
-		}
-		else if((event.keyCode >= 65 && event.keyCode <= 90) || (event.keyCode >= 97 && event.keyCode <= 122)) {
+		} else if (
+			(event.keyCode >= 65 && event.keyCode <= 90) ||
+			(event.keyCode >= 97 && event.keyCode <= 122)
+		) {
 			this.handleGuess(event.key);
-		}
-		else if(event.keyCode === 8 || event.keyCode === 13 || event.keyCode === 32) {
+		} else if (
+			event.keyCode === 8 ||
+			event.keyCode === 13 ||
+			event.keyCode === 32
+		) {
 			this.resetButton();
+		} else {
 		}
-		else {}
 	}
 
 	generateButtons() {
-		return "abcdefghijklmnopqrstuvwxyz".split("").map(letter => (
+		return 'abcdefghijklmnopqrstuvwxyz'.split('').map((letter) => (
 			<button
 				key={letter}
 				value={letter}
@@ -72,64 +92,73 @@ class Hangman extends Component {
 		this.setState({
 			mistake: 0,
 			guessed: new Set(),
-			answer: randomWord()
+			answer: randomWord(),
 		});
 	};
 
 	render() {
-		const gameOver = this.state.mistake >= this.props.maxWrong;
-		const altText = `${this.state.mistake}/${this.props.maxWrong} wrong guesses`;
-		const isWinner = this.guessedWord().join("") === this.state.answer;
+		const { mistake, answer } = this.state;
+		const { maxWrong, images } = this.props;
+		const gameOver = mistake >= maxWrong;
+		const altText = `${mistake}/${maxWrong} wrong guesses`;
+		const isWinner = this.guessedWord().join('') === answer;
 		gameStat = this.generateButtons();
 		if (isWinner) {
-			gameStat = "YOU WON";
+			gameStat = 'YOU WON';
 		}
 		if (gameOver) {
-			gameStat = "YOU LOST";
+			gameStat = 'YOU LOST';
 		}
 
 		return (
-			<div className='Hangman'>
-				<nav className='navbar navbar-expand-lg'>
-					<a className='navbar-brand text-light' href='/'>
+			<div className="Hangman">
+				<nav className="navbar navbar-expand-lg">
+					<a className="navbar-brand text-light" href="/">
 						Hangman. <small>Do (or) Die</small>
 					</a>
-					<span className='d-xl-none d-lg-none text-primary'>
-						Guessed wrong: {this.state.mistake}
+					<span className="d-xl-none d-lg-none text-primary">
+						Guessed wrong: {mistake}
 					</span>
 					<button
-						className='navbar-toggler sr-only'
-						type='button'
-						data-toggle='collapse'
-						data-target='#navbarText'
-						aria-controls='navbarText'
-						aria-expanded='false'
-						aria-label='Toggle navigation'
+						className="navbar-toggler sr-only"
+						type="button"
+						data-toggle="collapse"
+						data-target="#navbarText"
+						aria-controls="navbarText"
+						aria-expanded="false"
+						aria-label="Toggle navigation"
 					>
-						<span className='navbar-toggler-icon'></span>
+						<span className="navbar-toggler-icon"></span>
 					</button>
-					<div className='collapse navbar-collapse' id='navbarText'>
-						<ul className='navbar-nav mr-auto'>
-							<li className='nav-item '></li>
-							<li className='nav-item'></li>
-							<li className='nav-item'></li>
+					<div className="collapse navbar-collapse" id="navbarText">
+						<ul className="navbar-nav mr-auto">
+							<li className="nav-item "></li>
+							<li className="nav-item"></li>
+							<li className="nav-item"></li>
 						</ul>
-						<span className='navbar-text text-primary'>Guessed wrong: {this.state.mistake}</span>
+						<span className="navbar-text text-primary">
+							Guessed wrong: {mistake}
+						</span>
 					</div>
 				</nav>
-				<p className='text-center'>
-					<img src={this.props.images[this.state.mistake]} alt={altText} />
+				<p className="text-center">
+					<img src={images[mistake]} alt={altText} />
 				</p>
-				<p className='text-center text-light'>Guess the Programming Language ?</p>
-				<p className='Hangman-word text-center'>
-					{!gameOver ? this.guessedWord() : this.state.answer}{" "}
+				<p className="text-center text-light">
+					Guess the Programming Language ?
+				</p>
+				<p className="Hangman-word text-center">
+					{!gameOver ? this.guessedWord() : answer}{' '}
 				</p>
 
-				<p className='text-center text-warning mt-4'>{gameStat}</p>
+				<p className="text-center text-warning mt-4">{gameStat}</p>
 
 				<div>
-					<p className='text-center'>
-						<button className='Hangman-reset' onClick={this.resetButton}>
+					<p className="text-center">
+						<button
+							className="Hangman-reset"
+							onClick={this.resetButton}
+						>
 							Reset
 						</button>
 					</p>
