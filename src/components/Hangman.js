@@ -13,7 +13,7 @@ let gameStat;
 class Hangman extends Component {
   static defaultProps = {
     maxWrong: 6,
-    images: [step0, step1, step2, step3, step4, step5, step6],
+    images: [step0, step1, step2, step3, step4, step5, step6]
   };
 
   constructor(props) {
@@ -21,7 +21,7 @@ class Hangman extends Component {
     this.state = {
       mistake: 0,
       guessed: new Set(),
-      answer: randomWord(),
+      answer: randomWord()
     };
     this.handleGuess = this.handleGuess.bind(this);
     this.keyPress = this.keyPress.bind(this);
@@ -38,7 +38,7 @@ class Hangman extends Component {
     let letter = value;
     this.setState((st) => ({
       guessed: st.guessed.add(letter),
-      mistake: st.mistake + (st.answer.includes(letter) ? 0 : 1),
+      mistake: st.mistake + (st.answer.includes(letter) ? 0 : 1)
     }));
   }
 
@@ -88,7 +88,7 @@ class Hangman extends Component {
     this.setState({
       mistake: 0,
       guessed: new Set(),
-      answer: randomWord(),
+      answer: randomWord()
     });
   };
 
@@ -112,7 +112,7 @@ class Hangman extends Component {
           <a className="navbar-brand text-light" href="/">
             Hangman. <small>Do (or) Die</small>
           </a>
-          <span className="d-xl-none d-lg-none text-primary">
+          <span className="d-xl-none d-lg-none text-warning">
             Guessed wrong: {mistake}
           </span>
           <button
@@ -132,19 +132,19 @@ class Hangman extends Component {
               <li className="nav-item"></li>
               <li className="nav-item"></li>
             </ul>
-            <span className="navbar-text text-primary">
+            <strong className="navbar-text text-warning">
               Guessed wrong: {mistake}
-            </span>
+            </strong>
           </div>
         </nav>
         <p className="text-center">
           <img src={images[mistake]} alt={altText} />
         </p>
-        <p className="text-center text-light">
+        <h4 className="text-center text-light">
           Guess the Programming Language ?
-        </p>
+        </h4>
         <p className="Hangman-word text-center">
-          {!gameOver ? this.guessedWord() : answer}{" "}
+          {!gameOver ? this.guessedWord() : answer}
         </p>
 
         <p className="text-center text-warning mt-4">{gameStat}</p>
