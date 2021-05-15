@@ -5,20 +5,21 @@ body {
     "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #222;
+  background: #0c0c13;
 }
 
 /*custom css*/
 
 :root {
-  --main-color: #fff;
+  --main-color: #07ffc9;
+  --error-color: #ff1100;
   --secondary-color: #158cee;
   --hash-color: #d6dfdf;
 }
 
 .Hangman img {
   width: 200px;
-  height: 200px;
+  height: 350px;
 }
 
 .Hangman h1 {
@@ -47,29 +48,30 @@ body {
   font-size: 2.5rem;
   cursor: pointer;
   width: 5rem;
-  height: 5rem;
-  margin: 10px;
+  margin: 18px 8px 10px 13px;
   letter-spacing: 0px;
   outline: none;
-  background: transparent;
-  color: #fff;
-  border-radius: 15px;
-  box-shadow: 10px 10px 12px 0 rgba(0, 0, 0, 0.5),
-    -4px -4px 12px 0 rgba(255, 255, 255, 0.2);
-  transition: color box-shadow 200ms ease-in;
+  background: var(--main-color);
+  color: rgb(0, 0, 0);
+  border-radius: 10px;
+  padding-top: 15px;
 }
 
 .Hangman-reset {
+  color: var(--hash-color);
+  box-shadow: 0 6px var(--main-color) !important;
   width: 10rem !important;
+  background-color: var(--main-color);
+  border-color: var(--main-color);
+  box-shadow: 0 0 40px var(--main-color);
 }
-.Hangman button:not(:disabled):hover {
-  text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.5);
-  background: rgba(255, 255, 255, 0.01);
+.Hangman button:hover {
+  background-color: #fffffa;
 }
 
-.Hangman button:disabled,
-.Hangman button:active {
-  opacity: 0.5;
-  box-shadow: inset 10px 10px 12px 0 rgba(0, 0, 0, 0.5),
-    inset -4px -4px 12px 0 rgba(255, 255, 255, 0.2);
+.Hangman button:disabled {
+  color: var(--hash-color);
+  background-color: var(--error-color);
+  border-color: var(--error-color);
+  box-shadow: 0 0 40px var(--error-color);
 }
