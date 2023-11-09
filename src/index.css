@@ -45,7 +45,7 @@ body {
 .Hangman button {
   border: none;
   font-family: inherit;
-  font-size: 2.5rem;
+  font-size: 2rem;
   cursor: pointer;
   width: 5rem;
   margin: 18px 8px 10px 13px;
