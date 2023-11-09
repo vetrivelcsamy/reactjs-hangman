@@ -137,7 +137,7 @@ class Hangman extends Component {
           <p className="text-center">
           <br/>
             <button className="Hangman-reset" onClick={this.Choose_level}>
-              Easyy
+              Easy
             </button>
             <button className="Hangman-reset" onClick={this.Choose_level}>
               Medium
