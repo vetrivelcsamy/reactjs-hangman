@@ -11,6 +11,9 @@ import step6 from "./images/6.jpg";
 
 let gameStat;
 class Hangman extends Component {
+  Choose_level(){
+    return  ;
+  }
   static defaultProps = {
     maxWrong: 6,
     images: [step0, step1, step2, step3, step4, step5, step6],
