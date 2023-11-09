@@ -13,7 +13,7 @@ const PROGRAMING_LANG = [
   "elm",
   "erlang",
   "fortran",
-  "go",
+  "golang",
   "groovy",
   "haskell",
   "html",
