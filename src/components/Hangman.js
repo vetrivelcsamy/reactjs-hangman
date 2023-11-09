@@ -115,9 +115,13 @@ class Hangman extends Component {
           <a className="navbar-brand text-light" href="/">
             Hangman. <small>Do (or) Die</small>
           </a>
+
+         
           <span className="d-xl-none d-lg-none text-primary">
             Guessed wrong: {mistake}
           </span>
+          
+
           <button
             className="navbar-toggler sr-only"
             type="button"
@@ -129,6 +133,19 @@ class Hangman extends Component {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
+          
+          <p className="text-center">
+          <br/>
+            <button className="Hangman-reset" onClick={this.Choose_level}>
+              Easy
+            </button>
+            <button className="Hangman-reset" onClick={this.Choose_level}>
+              Medium
+            </button>
+            <button className="Hangman-reset" onClick={this.Choose_level}>
+              Hard
+            </button>
+          </p>
           <div className="collapse navbar-collapse" id="navbarText">
             <ul className="navbar-nav mr-auto">
               <li className="nav-item "></li>
