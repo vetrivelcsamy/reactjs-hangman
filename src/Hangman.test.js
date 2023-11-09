@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import Hangman from './components/Hangman';
 
-//เหนื่อยมั่กๆคับ
+
 function Choose_level(level) {
   console.log(`Selected level: ${level}`);
   return level;
