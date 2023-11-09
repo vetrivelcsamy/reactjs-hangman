@@ -11,9 +11,11 @@ import step6 from "./images/6.jpg";
 
 let gameStat;
 class Hangman extends Component {
-  Choose_level(){
-    return  ;
-  }
+  Choose_level = (level) => {
+    // Handle the level logic here
+    console.log(`Selected level: ${level}`);
+    
+  };
   static defaultProps = {
     maxWrong: 6,
     images: [step0, step1, step2, step3, step4, step5, step6],
@@ -136,15 +138,15 @@ class Hangman extends Component {
           
           <p className="text-center">
           <br/>
-            <button className="Hangman-reset" onClick={this.Choose_level}>
-              Easy
-            </button>
-            <button className="Hangman-reset" onClick={this.Choose_level}>
-              Medium
-            </button>
-            <button className="Hangman-reset" onClick={this.Choose_level}>
-              Hard
-            </button>
+          <button className="Hangman-reset" onClick={() => this.Choose_level('Easy')}>
+            Easy
+          </button>
+          <button className="Hangman-reset" onClick={() => this.Choose_level('Medium')}>
+            Medium
+          </button>
+          <button className="Hangman-reset" onClick={() => this.Choose_level('Hard')}>
+            Hard
+          </button>
           </p>
           <div className="collapse navbar-collapse" id="navbarText">
             <ul className="navbar-nav mr-auto">
