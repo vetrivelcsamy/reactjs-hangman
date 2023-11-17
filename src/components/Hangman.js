@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { randomWord ,randomWordEasy ,randomWordMedium ,randomWordHard  } from "./words";
+import { randomWord, randomWordEasy, randomWordMedium, randomWordHard } from "./words";
 
 import step0 from "./images/0.jpg";
 import step1 from "./images/1.jpg";
@@ -9,21 +9,24 @@ import step4 from "./images/4.jpg";
 import step5 from "./images/5.jpg";
 import step6 from "./images/6.jpg";
 
+let st_game;
 let gameStat;
 let states;
 var hint;
 class Hangman extends Component {
- 
-  Choose_level(level){
-    if(level == "Easy"){
-      states = randomWordEasy()
-    }else if(level == "Medium"){
-      states = randomWordMedium()
-    }else if(level == "Hard"){
-      states = randomWordHard()
+
+  Choose_level(level) {
+    if (level === "Easy") {
+      states = randomWordEasy();
+    } else if (level === "Medium") {
+      states = randomWordMedium();
+    } else if (level === "Hard") {
+      states = randomWordHard();
     }
-    
-  };
+    st_game = level ;
+    return states;
+  }
+
   static defaultProps = {
     maxWrong: 6,
     images: [step0, step1, step2, step3, step4, step5, step6],
@@ -31,11 +34,12 @@ class Hangman extends Component {
 
   constructor(props) {
     super(props);
+    const initialWord = this.Choose_level(props.difficultyLevel);
     this.state = {
       mistake: 0,
       guessed: new Set(),
-      answer: states,
-  
+      answer: initialWord,
+      hintMessage: '',
     };
     this.handleGuess = this.handleGuess.bind(this);
     this.keyPress = this.keyPress.bind(this);
@@ -79,10 +83,10 @@ class Hangman extends Component {
     // Update guessed letters with the new hint
     this.handleGuess(hint);
   
-    console.log("Hint: The word now looks like this: " + hint);
+    const hintMessage = `Hint: The word now looks like this - ${hint}`;
+    this.setState({ hintMessage });
   }
-
-
+  
   keyPress(event) {
     /**
      * 8 = backspace
@@ -129,7 +133,7 @@ class Hangman extends Component {
     this.setState({
       mistake: 0,
       guessed: new Set(),
-      answer: states,
+      answer: this.Choose_level(st_game),
     });
   };
 
@@ -154,11 +158,15 @@ class Hangman extends Component {
             Hangman. <small>Do (or) Die</small>
           </a>
 
-         
           <span className="d-xl-none d-lg-none text-primary">
             Guessed wrong: {mistake}
           </span>
-          
+
+          <p className="text-center">
+            <button className="hint" onClick={() => this.provideHint()}>
+              Hint
+            </button>
+          </p>
 
           <button
             className="navbar-toggler sr-only"
@@ -171,20 +179,7 @@ class Hangman extends Component {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          
-          <p className="text-center">
-          <br/>
 
-          <button id='Easy' className="Hangman-reset" onClick={() => this.Choose_level('Easy')}>
-            Easy
-          </button>
-          <button id='Medium' className="Hangman-reset" onClick={() => this.Choose_level('Medium')}>
-            Medium
-          </button>
-          <button id='Hard' className="Hangman-reset" onClick={() => this.Choose_level('Hard')}>
-            Hard
-           </button>
-          </p>
           <div className="collapse navbar-collapse" id="navbarText">
             <ul className="navbar-nav mr-auto">
               <li className="nav-item "></li>
