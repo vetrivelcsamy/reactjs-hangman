@@ -138,17 +138,7 @@ class Hangman extends Component {
           </button>
           
           <p className="text-center">
-          <br/>
-
-          <button id='Easy' className="Hangman-reset" onClick={() => this.Choose_level('Easy')}>
-            Easy
-          </button>
-          <button id='Medium' className="Hangman-reset" onClick={() => this.Choose_level('Medium')}>
-            Medium
-          </button>
-          <button id='Hard' className="Hangman-reset" onClick={() => this.Choose_level('Hard')}>
-            Hard
-           </button>
+          
           </p>
           <div className="collapse navbar-collapse" id="navbarText">
             <ul className="navbar-nav mr-auto">
