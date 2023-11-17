@@ -22,7 +22,7 @@ class Hangman extends Component {
     }else if(level == "Hard"){
       states = randomWordHard()
     }
-
+    
   };
   static defaultProps = {
     maxWrong: 6,
