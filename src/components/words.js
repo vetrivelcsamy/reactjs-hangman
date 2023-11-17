@@ -52,4 +52,37 @@ function randomWord() {
   return PROGRAMING_LANG[Math.floor(Math.random() * PROGRAMING_LANG.length)];
 }
 
-export { randomWord };
+function randomWordEasy(){
+  while(1){
+    var word = PROGRAMING_LANG[Math.floor(Math.random() * PROGRAMING_LANG.length)];
+  if(word.length<=4){
+      return word
+    }else{
+      continue
+    }
+  }
+}
+
+function randomWordMedium(){
+  while(1){
+    var word = PROGRAMING_LANG[Math.floor(Math.random() * PROGRAMING_LANG.length)];
+  if(word.length>4&&word.length<=6){
+      return word
+    }else{
+      continue
+    }
+  }
+}
+
+function randomWordHard(){
+  while(1){
+    var word = PROGRAMING_LANG[Math.floor(Math.random() * PROGRAMING_LANG.length)];
+  if(word.length>6){
+      return word
+    }else{
+      continue
+    }
+  }
+}
+
+export {randomWord ,randomWordEasy ,randomWordMedium ,randomWordHard};
