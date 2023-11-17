@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { randomWord } from "./words";
+import { randomWord ,randomWordEasy ,randomWordMedium ,randomWordHard  } from "./words";
 
 import step0 from "./images/0.jpg";
 import step1 from "./images/1.jpg";
@@ -100,7 +100,7 @@ class Hangman extends Component {
     this.setState({
       mistake: 0,
       guessed: new Set(),
-      answer: randomWord(),
+      answer: states,
     });
   };
 
