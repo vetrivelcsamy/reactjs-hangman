@@ -85,6 +85,4 @@ function randomWordHard(){
   }
 }
 
-
-
-export { randomWord };
+export { randomWord ,randomWordEasy ,randomWordMedium ,randomWordHard };
