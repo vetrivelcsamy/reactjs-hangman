@@ -12,6 +12,7 @@ import step6 from "./images/6.jpg";
 let st_game;
 let gameStat;
 let states;
+let state;
 var hint;
 class Hangman extends Component {
 
