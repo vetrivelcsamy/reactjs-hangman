@@ -8,13 +8,12 @@ body {
   background: #0c0c13;
 }
 
-/*custom css*/
-
 :root {
   --main-color: #07ffc9;
   --error-color: #ff1100;
   --secondary-color: #158cee;
   --hash-color: #d6dfdf;
+  --level-color: #FFD707;
 }
 
 .Hangman img {
@@ -65,6 +64,21 @@ body {
   border-color: var(--main-color);
   box-shadow: 0 0 40px var(--main-color);
 }
+
+/* .Hangman-level {
+  color: var(--level-color) ; 
+  box-shadow: 0 6px var(--level-color) !important;
+  width: 8rem !important ;
+  height: 2.5rem !important;
+  background-color: var(--level-color) !important ;
+  box-shadow: 0 0 40px var(--level-color) ;
+  border-radius: 10px !important;
+  padding-top: 0px !important;
+  text-align: center !important;
+
+} */
+
+
 .Hangman button:hover {
   background-color: #fffffa;
 }

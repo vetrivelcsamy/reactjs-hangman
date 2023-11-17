@@ -8,7 +8,7 @@
     "react-scripts": "^3.4.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts --openssl-legacy-provider start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -27,5 +27,26 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {
+    "@babel/core": "^7.23.3",
+    "@babel/preset-env": "^7.23.3",
+    "@babel/preset-react": "^7.23.3",
+    "babel-jest": "^24.9.0"
+  },
+  
+    "jest": {
+      "testEnvironment": "jsdom",
+      "transform": {
+        "^.+\\.jsx?$": "babel-jest"
+      },
+      "moduleFileExtensions": ["js", "jsx"],
+      "moduleNameMapper": {
+        "\\.(css|less|scss|sss|styl)$": "<rootDir>/node_modules/jest-css-modules",
+        "\\.(gif|ttf|eot|svg)$": "<rootDir>/__mocks__/fileMock.js"
+      }
+    }
+  
+  
+  
 }
