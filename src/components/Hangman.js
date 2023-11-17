@@ -10,11 +10,17 @@ import step5 from "./images/5.jpg";
 import step6 from "./images/6.jpg";
 
 let gameStat;
+let states ;
 class Hangman extends Component {
-
+ 
   Choose_level(level){
-    console.log(`Selected level: ${level}`);
-    return level;
+    if(level == "Easy"){
+      states = randomWordEasy()
+    }else if(level == "Medium"){
+      states = randomWordMedium()
+    }else if(level == "Hard"){
+      states = randomWordHard()
+    }
 
   };
   static defaultProps = {
@@ -27,7 +33,7 @@ class Hangman extends Component {
     this.state = {
       mistake: 0,
       guessed: new Set(),
-      answer: randomWord(),
+      answer: states
     };
     this.handleGuess = this.handleGuess.bind(this);
     this.keyPress = this.keyPress.bind(this);
