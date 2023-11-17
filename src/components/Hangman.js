@@ -10,7 +10,8 @@ import step5 from "./images/5.jpg";
 import step6 from "./images/6.jpg";
 
 let gameStat;
-let states ;
+let states;
+var hint;
 class Hangman extends Component {
  
   Choose_level(level){
@@ -21,7 +22,7 @@ class Hangman extends Component {
     }else if(level == "Hard"){
       states = randomWordHard()
     }
-
+    
   };
   static defaultProps = {
     maxWrong: 6,
@@ -33,7 +34,8 @@ class Hangman extends Component {
     this.state = {
       mistake: 0,
       guessed: new Set(),
-      answer: states
+      answer: states,
+  
     };
     this.handleGuess = this.handleGuess.bind(this);
     this.keyPress = this.keyPress.bind(this);
@@ -53,6 +55,33 @@ class Hangman extends Component {
       mistake: st.mistake + (st.answer.includes(letter) ? 0 : 1),
     }));
   }
+
+  provideHint() {
+    const answerSet = new Set(this.state.answer.split(''));
+    let availableHints = Array.from(answerSet);
+  
+    // Remove already guessed letters from available hints
+    for (const letter of this.state.guessed) {
+      if (availableHints.includes(letter)) {
+        availableHints = availableHints.filter((hint) => hint !== letter);
+      }
+    }
+  
+    if (availableHints.length === 0) {
+      console.log("No new hints available.");
+      return; // No new hints available
+    }
+  
+    // Randomly choose a hint from the available ones
+    const randomIndex = Math.floor(Math.random() * availableHints.length);
+    hint = availableHints[randomIndex];
+  
+    // Update guessed letters with the new hint
+    this.handleGuess(hint);
+  
+    console.log("Hint: The word now looks like this: " + hint);
+  }
+
 
   keyPress(event) {
     /**
