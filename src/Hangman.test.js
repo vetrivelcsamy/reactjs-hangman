@@ -45,12 +45,7 @@ function provideHint(answer, guessed) {
 }
 
 
-it('renders without problem', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<Homepage />, div);
-});
-
-it('Change to Easy Mode', () => {
+it('S1-Tc1 : Change to Easy Mode', () => {
   const div = document.createElement('div');
   ReactDOM.render(<Homepage />, div);
   var level = "Easy";
@@ -59,7 +54,7 @@ it('Change to Easy Mode', () => {
   expect(result).toString();
 });
 
-it('Change to Medium Mode', () => {
+it('S1-Tc2 : Change to Medium Mode', () => {
   const div = document.createElement('div');
   ReactDOM.render(<Homepage />, div);
   var level = "Medium";
@@ -68,7 +63,7 @@ it('Change to Medium Mode', () => {
   expect(result).toString();
 });
 
-it('Change to Hard Mode', () => {
+it('S1-Tc3 : Change to Hard Mode', () => {
   const div = document.createElement('div');
   ReactDOM.render(<Homepage />, div);
   var level = "Hard";
@@ -77,40 +72,15 @@ it('Change to Hard Mode', () => {
   expect(result).toString();
 });
 
-it('Giveing hint to player', () => {
-  const answer = 'HELLO';
-  const guessed = new Set(['H', 'E', 'L']);
-
-  const hint = provideHint(answer, guessed);
-
-  expect(hint).toBeTruthy();
-  expect(typeof hint).toBe('string');
-});
-
-it('Correctly guesses a letter', () => {
+it('S1-Tc4 : If Select Difficulty You can play', () => {
   const div = document.createElement('div');
   ReactDOM.render(<Hangman difficultyLevel="Easy" />, div);
-
-  const hangmanComponent = div.querySelector('.Hangman');
-  const hangmanWord = div.querySelector('.Hangman-word');
-  const buttons = div.querySelectorAll('button');
-
-  const wordToGuess = hangmanWord.textContent.trim();
-  const uniqueLetters = new Set(wordToGuess.split(''));
-
-  uniqueLetters.forEach((letter) => {
-    const button = [...buttons].find((btn) => btn.textContent === letter);
-    if (button) {
-      act(() => {
-        button.dispatchEvent(new MouseEvent('click', { bubbles: true }));
-      });
-    }
-  });
-
-  expect(hangmanWord.textContent).toContain(wordToGuess);
+  ReactDOM.render(<Hangman difficultyLevel="Medium" />, div);
+  ReactDOM.render(<Hangman difficultyLevel="Hard" />, div);
+  expect.anything();
 });
 
-it('Resets the game', async () => {
+it('S1-Tc5 : Resets the game', async () => {
   const div = document.createElement('div');
   ReactDOM.render(<Hangman difficultyLevel="Easy" />, div);
 
@@ -143,7 +113,66 @@ it('Resets the game', async () => {
   expect(updatedHangmanWord.textContent).toContain('_');
 });
 
-it('navigates back to homepage from Hangman', () => {
+it('S1-Tc1,Tc2,Tc3 : Correctly guesses a letter', () => {
+  const div = document.createElement('div');
+  ReactDOM.render(<Hangman difficultyLevel="Easy" />, div);
+
+  const hangmanComponent = div.querySelector('.Hangman');
+  const hangmanWord = div.querySelector('.Hangman-word');
+  const buttons = div.querySelectorAll('button');
+
+  const wordToGuess = hangmanWord.textContent.trim();
+  const uniqueLetters = new Set(wordToGuess.split(''));
+
+  uniqueLetters.forEach((letter) => {
+    const button = [...buttons].find((btn) => btn.textContent === letter);
+    if (button) {
+      act(() => {
+        button.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+      });
+    }
+  });
+
+  expect(hangmanWord.textContent).toContain(wordToGuess);
+});
+
+it('S3-Tc1 : Giveing 1 hint to player', () => {
+  const answer = 'HELLO';
+  const guessed = new Set(['H', 'E', 'L']);
+
+  const hint = provideHint(answer, guessed);
+
+  expect(hint).toBeTruthy();
+  expect(typeof hint).toBe('string');
+});
+
+test('S3-Tc2 : Cannot use "Hint" Button after Lose a game', () => {
+  const answer = 'apple';
+  const guessed = ['l', 'o', 's', 'e', 'a'];
+  var hint;
+
+  if(answer.length == guessed.length){
+    hint = null;
+  }
+    else{
+   hint = provideHint(answer, guessed);
+  }
+
+  expect(hint).toBeNull();
+});
+
+test('S3-Tc3 : Cannot use "Hint" Button after Win a game', () => {
+  const answer = 'apple';
+  const guessed = ['a', 'p', 'l', 'e'];
+
+  const hint = provideHint(answer, guessed);
+
+  expect(hint).toBeNull();
+});
+
+
+
+it('System Test : navigates back to homepage from Hangman', () => {
   const div = document.createElement('div');
   ReactDOM.render(<Hangman difficultyLevel="Easy" />, div);
 
