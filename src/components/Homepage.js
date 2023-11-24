@@ -12,51 +12,41 @@ export default function Homepage() {
 
   return (
     <div className="Hangman">
-      <nav className="navbar navbar-expand-lg">
+      <div className="text-center">
         {!showHangman && (
           <a className="navbar-brand text-light" href="/">
-            Hangman. <small>Do (or) Die</small>
+            <br />
+            <br />
+            <br />
+            <h1>Hangman.Do (or) Die</h1>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
           </a>
+
         )}
+      </div>
 
-        <button
-          className="navbar-toggler sr-only"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarText"
-          aria-controls="navbarText"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
+      <div className="text-center"> {/* Centering the content */}
+        {!showHangman && (
+          <>
+            <button id='Easy' className="Hangman-reset mx-2" onClick={() => startHangman('Easy')}>
+              Easy
+            </button>
+            <button id='Medium' className="Hangman-reset mx-2" onClick={() => startHangman('Medium')}>
+              Medium
+            </button>
+            <button id='Hard' className="Hangman-reset mx-2" onClick={() => startHangman('Hard')}>
+              Hard
+            </button>
+          </>
+        )}
+      </div>
 
-        <div className="text-center"> {/* Centering the content */}
-          {!showHangman && (
-            <>
-              <button id='Easy' className="Hangman-reset mx-2" onClick={() => startHangman('Easy')}>
-                Easy
-              </button>
-              <button id='Medium' className="Hangman-reset mx-2" onClick={() => startHangman('Medium')}>
-                Medium
-              </button>
-              <button id='Hard' className="Hangman-reset mx-2" onClick={() => startHangman('Hard')}>
-                Hard
-              </button>
-            </>
-          )}
-        </div>
+      {showHangman && <Hangman difficultyLevel={difficultyLevel} />}
 
-        <div className="collapse navbar-collapse" id="navbarText">
-          <ul className="navbar-nav mr-auto">
-            <li className="nav-item"></li>
-            <li className="nav-item"></li>
-            <li className="nav-item"></li>
-          </ul>
-        </div>
-
-        {showHangman && <Hangman difficultyLevel={difficultyLevel} />}
-      </nav>
     </div>
   );
 }
