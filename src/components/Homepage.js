@@ -42,7 +42,44 @@ export default function Homepage() {
           </div>
         )}
 
-          {!showHangman && (
+          
+{!showHangman && (
+            <div
+            style={{
+              marginTop: 30 ,
+              display: 'flex' ,
+              gap: 50,
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+
+          >
+            <>
+            <button
+              id='Easy'
+              className="Hangman-reset mx-2 animated-button"
+              onClick={() => startHangman('Easy')}>
+              Animal
+            </button>
+            <button
+              id='Medium'
+              className="Hangman-reset mx-2 animated-button"
+              onClick={() => startHangman('Medium')}>
+              Program Lang
+            </button>
+            <button
+              id='Hard'
+              className="Hangman-reset mx-2 animated-button"
+              onClick={() => startHangman('Hard')}>
+              Country
+            </button>
+            </>
+                
+            </div>
+              
+          )}
+
+{!showHangman && (
             <div
             style={{
               display: 'flex' ,
@@ -77,6 +114,7 @@ export default function Homepage() {
             </div>
               
           )}
+
 
           {!showHangman && (
             <ul className="circles" style={{zIndex:1}}>
