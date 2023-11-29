@@ -145,6 +145,7 @@ class Hangman extends Component {
   generateButtons() {
     return "abcdefghijklmnopqrstuvwxyz".split("").map((letter) => (
       <button
+      className="Hangman-word animated-button"
         key={letter}
         value={letter}
         onClick={(e) => this.handleGuess(e.target.value)}
@@ -180,16 +181,16 @@ class Hangman extends Component {
     return (
       <div className="Hangman">
         <nav className="navbar navbar-expand-lg">
-          <a className="navbar-brand text-light" href="/">
-            Hangman. <small>Do (or) Die</small>
+          <a className="navbar-brand text-light animated-button" href="/">
+            Hangman. <small>Do (or) 💀</small>
           </a>
 
           <span className="d-xl-none d-lg-none text-primary">
             Guessed wrong: {mistake}
           </span>
 
-          <p className="text-center">
-            <button className="hint" onClick={() => this.provideHint()}>
+          <p className="text-center animated-button">
+            <button className="Hangman-hint" onClick={() => this.provideHint()}>
               Hint
             </button>
           </p>
@@ -230,8 +231,8 @@ class Hangman extends Component {
         <p className="text-center text-warning mt-4">{gameStat}</p>
 
         <div>
-          <p className="text-center">
-            <button className="Hangman-reset" onClick={this.resetButton}>
+          <p className="text-center ">
+            <button className="Hangman-reset animated-button" onClick={this.resetButton}>
               Reset
             </button>
           </p>
