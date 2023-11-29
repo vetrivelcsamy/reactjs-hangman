@@ -11,6 +11,9 @@ let state;
 let st_game;
 let cat_game ;
 
+function setst_game(level){
+  st_game = level ;
+}
 function clearst_game(){
   st_game = "" ;
 }
@@ -70,7 +73,7 @@ function provideHint(answer, guessed) {
 }
 
 
-test('S1-Tc1,S2-Tc1 : Change to Programming with Easy Mode', () => {
+it('S1-Tc1,S2-Tc1 : Change to Programming with Easy Mode', () => {
   const div = document.createElement('div');
   ReactDOM.render(<Homepage />, div);
   var level = "Easy";
@@ -81,7 +84,7 @@ test('S1-Tc1,S2-Tc1 : Change to Programming with Easy Mode', () => {
   expect(result).toString();
 });
 
-test('S1-Tc2,S2-Tc2 : Change to Programming with Medium Mode', () => {
+it('S1-Tc2,S2-Tc2 : Change to Programming with Medium Mode', () => {
   const div = document.createElement('div');
   ReactDOM.render(<Homepage />, div);
   var level = "Medium";
@@ -93,7 +96,7 @@ test('S1-Tc2,S2-Tc2 : Change to Programming with Medium Mode', () => {
 });
 
 
-test('S1-Tc3,S2-Tc3 : Change to Programming with Hard Mode', () => {
+it('S1-Tc3,S2-Tc3 : Change to Programming with Hard Mode', () => {
   const div = document.createElement('div');
   ReactDOM.render(<Homepage />, div);
   var level = "Hard";
@@ -104,7 +107,7 @@ test('S1-Tc3,S2-Tc3 : Change to Programming with Hard Mode', () => {
   expect(result).toString();
 });
 
-test('S1-Tc1,S2-Tc4 : Change to Animal with Easy Mode', () => {
+it('S1-Tc1,S2-Tc4 : Change to Animal with Easy Mode', () => {
   const div = document.createElement('div');
   ReactDOM.render(<Homepage />, div);
   var level = "Easy";
@@ -115,7 +118,7 @@ test('S1-Tc1,S2-Tc4 : Change to Animal with Easy Mode', () => {
   expect(result).toString();
 });
 
-test('S1-Tc2,S2-Tc5 : Change to Animal with Medium Mode', () => {
+it('S1-Tc2,S2-Tc5 : Change to Animal with Medium Mode', () => {
   const div = document.createElement('div');
   ReactDOM.render(<Homepage />, div);
   var level = "Medium";
@@ -127,7 +130,7 @@ test('S1-Tc2,S2-Tc5 : Change to Animal with Medium Mode', () => {
 });
 
 
-test('S1-Tc3,S2-Tc6 : Change to Animal with Hard Mode', () => {
+it('S1-Tc3,S2-Tc6 : Change to Animal with Hard Mode', () => {
   const div = document.createElement('div');
   ReactDOM.render(<Homepage />, div);
   var level = "Hard";
@@ -138,7 +141,7 @@ test('S1-Tc3,S2-Tc6 : Change to Animal with Hard Mode', () => {
   expect(result).toString();
 });
 
-test('S1-Tc1,S2-Tc7 : Change to Country with Easy Mode', () => {
+it('S1-Tc1,S2-Tc7 : Change to Country with Easy Mode', () => {
   const div = document.createElement('div');
   ReactDOM.render(<Homepage />, div);
   var level = "Easy";
@@ -149,7 +152,7 @@ test('S1-Tc1,S2-Tc7 : Change to Country with Easy Mode', () => {
   expect(result).toString();
 });
 
-test('S1-Tc2,S2-Tc8 : Change to Country with Medium Mode', () => {
+it('S1-Tc2,S2-Tc8 : Change to Country with Medium Mode', () => {
   const div = document.createElement('div');
   ReactDOM.render(<Homepage />, div);
   var level = "Medium";
@@ -161,7 +164,7 @@ test('S1-Tc2,S2-Tc8 : Change to Country with Medium Mode', () => {
 });
 
 
-test('S1-Tc3,S2-Tc9 : Change to Country with Hard Mode', () => {
+it('S1-Tc3,S2-Tc9 : Change to Country with Hard Mode', () => {
   const div = document.createElement('div');
   ReactDOM.render(<Homepage />, div);
   var level = "Hard";
@@ -172,7 +175,7 @@ test('S1-Tc3,S2-Tc9 : Change to Country with Hard Mode', () => {
   expect(result).toString();
 });
 
-test('S1-Tc4,S2-Tc10 : If Select Difficulty You can play', () => {
+it('S1-Tc4,S2-Tc10 : If Select Difficulty You can play', () => {
   const div = document.createElement('div');
   //Programming
   ReactDOM.render(<Hangman difficultyLevel="Easy" category="Programming" />, div);
@@ -189,7 +192,7 @@ test('S1-Tc4,S2-Tc10 : If Select Difficulty You can play', () => {
   expect.anything();
 });
 
-test('S1-Tc5,S2-Tc11 : Resets the game', async () => {
+it('S1-Tc5,S2-Tc11 : Resets the game', async () => {
   const div = document.createElement('div');
   ReactDOM.render(<Hangman difficultyLevel="Easy" category="Animal" />, div);
 
@@ -223,7 +226,7 @@ test('S1-Tc5,S2-Tc11 : Resets the game', async () => {
 });
 
 
-test('S1-Tc1,Tc2,Tc3 , S2-Tc1,Tc2,Tc3,Tc4,Tc5,Tc6,Tc7,Tc8,Tc9, : Correctly guesses a letter', () => {
+it('S1-Tc1,Tc2,Tc3 , S2-Tc1,Tc2,Tc3,Tc4,Tc5,Tc6,Tc7,Tc8,Tc9, : Correctly guesses a letter', () => {
   const div = document.createElement('div');
   ReactDOM.render(<Hangman difficultyLevel="Easy" category="Animal" />, div);
 
@@ -247,7 +250,7 @@ test('S1-Tc1,Tc2,Tc3 , S2-Tc1,Tc2,Tc3,Tc4,Tc5,Tc6,Tc7,Tc8,Tc9, : Correctly guess
 });
 
 
-test('S3-Tc1: Giving 1 hint to player', () => {
+it('S3-Tc1: Giving 1 hint to player', () => {
   const answer = 'HELLO';
   const guessed = new Set(['H', 'E', 'L']);
   clearst_game() ;
@@ -258,7 +261,7 @@ test('S3-Tc1: Giving 1 hint to player', () => {
   expect(typeof hint).toBe('string');
 });
 
-test('S3-Tc2 : Cannot use "Hint" Button after Lose a game', () => {
+it('S3-Tc2 : Cannot use "Hint" Button after Lose a game', () => {
   const answer = 'apple';
   const guessed = ['l', 'o', 's', 'e', 'a'];
   var hint;
@@ -273,7 +276,7 @@ test('S3-Tc2 : Cannot use "Hint" Button after Lose a game', () => {
   expect(hint).toBeNull();
 });
 
-test('S3-Tc3: Cannot use "Hint" Button after Win a game', () => {
+it('S3-Tc3: Cannot use "Hint" Button after Win a game', () => {
   const answer = 'apple';
   const guessed = ['a', 'p', 'l', 'e'];
 
@@ -283,52 +286,57 @@ test('S3-Tc3: Cannot use "Hint" Button after Win a game', () => {
 
   expect(hint).toBeUndefined();
 });
-
-test("S6-Tc1 : can't give hint in easy mode", () => {
+it("S6-Tc1 : can't give hint in easy mode", () => {
   const answer = 'dog';
   const guessed = ['d' ];
   clearst_game() ;
-  Choose_level("Easy","Animal") ;
+  setst_game("Easy") ;
 
   const hint = provideHint(answer,guessed) ;
 
   expect(hint).toBeUndefined();
 })
 
-test("S6-Tc1 : can't give hint in Medium mode", () => {
-  const answer = 'dog';
-  const guessed = ['d' ];
-  clearst_game() ;
-  Choose_level("Medium","Programming") ;
-
-  const hint = provideHint(answer,guessed) ;
-
-  expect(hint).toBeUndefined();
-})
-
-test("S6-Tc2 : can't give hint in Medium mode", () => {
+it("S6-Tc2 : can't give hint in Medium mode", () => {
   const answer = 'tiger';
   const guessed = ['t','i','g'];
   clearst_game() ;
-  Choose_level("Medium","Programming") ;
+  setst_game("Medium","Programming") ;
 
   const hint = provideHint(answer,guessed) ;
 
   expect(hint).toBeUndefined();
 })
 
-test("S6-Tc3 : can't give hint in Hard mode", () => {
+it("S6-Tc3 : can't give hint in Hard mode", () => {
   const answer = 'aoifuka';
   const guessed = ['a','o','i'];
   clearst_game() ;
-  Choose_level("Hard","Programming") ;
+  setst_game("Hard") ;
 
   const hint = provideHint(answer,guessed) ;
 
   expect(hint).toBeUndefined();
 })
 
-test('System Test : navigates back to homepage from Hangman', () => {
+it('S7-Tc1 : Can be render', () => {
+  const div = document.createElement('div');
+  //Programming
+  ReactDOM.render(<Hangman difficultyLevel="Easy" category="Programming" />, div);
+  ReactDOM.render(<Hangman difficultyLevel="Medium" category="Programming" />, div);
+  ReactDOM.render(<Hangman difficultyLevel="Hard" category="Programming" />, div);
+  //Animal
+  ReactDOM.render(<Hangman difficultyLevel="Easy" category="Animal" />, div);
+  ReactDOM.render(<Hangman difficultyLevel="Medium" category="Animal" />, div);
+  ReactDOM.render(<Hangman difficultyLevel="Hard" category="Animal" />, div);
+  //Country
+  ReactDOM.render(<Hangman difficultyLevel="Easy" category="Country" />, div);
+  ReactDOM.render(<Hangman difficultyLevel="Medium" category="Country" />, div);
+  ReactDOM.render(<Hangman difficultyLevel="Hard" category="Country" />, div);
+  expect.anything();
+});
+
+it('System Test : navigates back to homepage from Hangman', () => {
   const div = document.createElement('div');
   ReactDOM.render(<Hangman difficultyLevel="Easy" category="Animal" />, div);
 
