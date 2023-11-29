@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { randomWord, randomWordEasy, randomWordMedium, randomWordHard } from "./words";
+import { PROGRAMING_LANG,ANIMAL_ARRAY,COUNTRY_ARRAY, randomWordEasy, randomWordMedium, randomWordHard } from "./words";
 
 import step0 from "./images/0.jpg";
 import step1 from "./images/1.jpg";
@@ -11,19 +11,33 @@ import step6 from "./images/6.jpg";
 
 let st_game;
 let gameStat;
+let cat_game;
 let states;
 let state;
 var hint;
 class Hangman extends Component {
-
-  Choose_level(level) {
-    if (level === "Easy") {
-      states = randomWordEasy();
-    } else if (level === "Medium") {
-      states = randomWordMedium();
-    } else if (level === "Hard") {
-      states = randomWordHard();
+  
+  Choose_Category(input){
+    var Category;
+    if(input === "Programming"){
+      Category = PROGRAMING_LANG;
+    }else if(input === "Animal"){
+      Category = ANIMAL_ARRAY;
+    }else if(input === "Country"){
+      Category = COUNTRY_ARRAY;
     }
+    return Category;
+  }
+
+  Choose_level(level,Category) {
+    if (level === "Easy") {
+      states = randomWordEasy(Category);
+    } else if (level === "Medium") {
+      states = randomWordMedium(Category);
+    } else if (level === "Hard") {
+      states = randomWordHard(Category);
+    }
+    cat_game = Category;
     st_game = level ;
     return states;
   }
@@ -35,12 +49,14 @@ class Hangman extends Component {
 
   constructor(props) {
     super(props);
-    const initialWord = this.Choose_level(props.difficultyLevel);
+    const selectedCategory = this.Choose_Category(props.category);
+    const initialWord = this.Choose_level(props.difficultyLevel , selectedCategory );
     this.state = {
       mistake: 0,
       guessed: new Set(),
       answer: initialWord,
       hintMessage: '',
+      category: props.category
     };
     this.handleGuess = this.handleGuess.bind(this);
     this.keyPress = this.keyPress.bind(this);
@@ -143,12 +159,25 @@ class Hangman extends Component {
       </button>
     ));
   }
+  
+  showCategory = () => {
+    switch (this.state.category) {
+      case "Programming":
+        return "Programming Language";
+      case "Animal":
+        return "Animal";
+      case "Country":
+        return "Country";
+      default:
+        return "";
+    }
+  };
 
   resetButton = () => {
     this.setState({
       mistake: 0,
       guessed: new Set(),
-      answer: this.Choose_level(st_game),
+      answer: this.Choose_level(st_game,cat_game),
     });
   };
 
@@ -210,7 +239,7 @@ class Hangman extends Component {
           <img src={images[mistake]} alt={altText} />
         </p>
         <p className="text-center text-light">
-          Guess the Programming Language ?
+          Guess the {this.showCategory()} ?
         </p>
         <p className="Hangman-word text-center">
           {!gameOver ? this.guessedWord() : answer}{" "}
