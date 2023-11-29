@@ -49,79 +49,75 @@ const PROGRAMING_LANG = [
 ];
 
 const ANIMAL_ARRAY = [
-  "Dog", "Cow", "Cat", "Horse",
-  "Donkey", "Tiger", "Lion", "Panther",
-  "Leopard", "Cheetah", "Bear", "Elephant",
-  "Polar bear", "Turtle", "Tortoise", "Crocodile",
-  "Rabbit", "Porcupine", "Hare", "Hen",
-  "Pigeon", "Albatross", "Crow", "Fish",
-  "Dolphin", "Frog", "Whale", "Alligator",
-  "Eagle", "Flying squirrel", "Ostrich", "Fox",
-  "Goat", "Jackal", "Emu", "Armadillo",
-  "Eel", "Goose", "Arctic fox", "Wolf",
-  "Beagle", "Gorilla", "Chimpanzee", "Monkey",
-  "Beaver", "Orangutan", "Antelope", "Bat",
-  "Badger", "Giraffe", "Hermit Crab", "Giant Panda",
-  "Hamster", "Cobra", "Hammerhead shark", "Camel",
-  "Hawk", "Deer", "Chameleon", "Hippopotamus",
-  "Jaguar", "Chihuahua", "King Cobra", "Ibex",
-  "Lizard", "Koala", "Kangaroo", "Iguana",
-  "Llama", "Chinchillas", "Dodo", "Jellyfish",
-  "Rhinoceros", "Hedgehog", "Zebra", "Possum",
-  "Wombat", "Bison", "Bull", "Buffalo",
-  "Sheep", "Meerkat", "Mouse", "Otter",
-  "Sloth", "Owl", "Vulture", "Flamingo",
-  "Raccoon", "Mole", "Duck", "Swan",
-  "Lynx", "Monitor lizard", "Elk", "Boar",
-  "Lemur", "Mule", "Baboon", "Mammoth",
-  "Blue whale", "Rat", "Snake", "Peacock"
+  "dog", "cow", "cat", "horse",
+  "donkey", "tiger", "lion", "panther",
+  "leopard", "cheetah", "bear", "elephant",
+  "polar bear", "turtle", "tortoise", "crocodile",
+  "rabbit", "porcupine", "hare", "hen",
+  "pigeon", "albatross", "crow", "fish",
+  "dolphin", "frog", "whale", "alligator",
+  "eagle", "flying squirrel", "ostrich", "fox",
+  "goat", "jackal", "emu", "armadillo",
+  "eel", "goose", "arctic fox", "wolf",
+  "beagle", "gorilla", "chimpanzee", "monkey",
+  "beaver", "orangutan", "antelope", "bat",
+  "badger", "giraffe", "hermit crab", "giant panda",
+  "hamster", "cobra", "hammerhead shark", "camel",
+  "hawk", "deer", "chameleon", "hippopotamus",
+  "jaguar", "chihuahua", "king cobra", "ibex",
+  "lizard", "koala", "kangaroo", "iguana",
+  "llama", "chinchillas", "dodo", "jellyfish",
+  "rhinoceros", "hedgehog", "zebra", "possum",
+  "wombat", "bison", "bull", "buffalo",
+  "sheep", "meerkat", "mouse", "otter",
+  "sloth", "owl", "vulture", "flamingo",
+  "raccoon", "mole", "duck", "swan",
+  "lynx", "monitor lizard", "elk", "boar",
+  "lemur", "mule", "baboon", "mammoth",
+  "blue whale", "rat", "snake", "peacock"
 ];
 
 const COUNTRY_ARRAY = [
-  "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda",
-  "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "The Bahamas",
-  "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin",
-  "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei",
-  "Bulgaria", "Burkina Faso", "Burundi", "Cabo Verde", "Cambodia", "Cameroon",
-  "Canada", "Central African Republic", "Chad", "Chile", "China", "Colombia",
-  "Comoros", "Congo, Democratic Republic of the", "Congo, Republic of the",
-  "Costa Rica", "Côte d’Ivoire", "Croatia", "Cuba", "Cyprus", "Czech Republic",
-  "Denmark", "Djibouti", "Dominica", "Dominican Republic", "East Timor (Timor-Leste)",
-  "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia",
-  "Eswatini", "Ethiopia", "Fiji", "Finland", "France", "Gabon", "The Gambia",
-  "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea",
-  "Guinea-Bissau", "Guyana", "Haiti", "Honduras", "Hungary", "Iceland", "India",
-  "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan",
-  "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Korea, North", "Korea, South",
-  "Kosovo", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho",
-  "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Madagascar",
-  "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands",
-  "Mauritania", "Mauritius", "Mexico", "Micronesia, Federated States of",
-  "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique",
-  "Myanmar (Burma)", "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand",
-  "Nicaragua", "Niger", "Nigeria", "North Macedonia", "Norway", "Oman", "Pakistan",
-  "Palau", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland",
-  "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis",
-  "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino",
-  "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles",
-  "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia",
-  "South Africa", "Spain", "Sri Lanka", "Sudan", "Sudan, South", "Suriname", "Sweden",
-  "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Togo",
-  "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu",
-  "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States",
-  "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City", "Venezuela", "Vietnam", "Yemen",
-  "Zambia", "Zimbabwe"
+  "afghanistan", "albania", "algeria", "andorra", "angola", "antigua and barbuda",
+  "argentina", "armenia", "australia", "austria", "azerbaijan", "the bahamas",
+  "bahrain", "bangladesh", "barbados", "belarus", "belgium", "belize", "benin",
+  "bhutan", "bolivia", "bosnia and herzegovina", "botswana", "brazil", "brunei",
+  "bulgaria", "burkina faso", "burundi", "cabo verde", "cambodia", "cameroon",
+  "canada", "central african republic", "chad", "chile", "china", "colombia",
+  "comoros", "congo, democratic republic of the", "congo, republic of the",
+  "costa rica", "côte d’ivoire", "croatia", "cuba", "cyprus", "czech republic",
+  "denmark", "djibouti", "dominica", "dominican republic", "east timor (timor-leste)",
+  "ecuador", "egypt", "el salvador", "equatorial guinea", "eritrea", "estonia",
+  "eswatini", "ethiopia", "fiji", "finland", "france", "gabon", "the gambia",
+  "georgia", "germany", "ghana", "greece", "grenada", "guatemala", "guinea",
+  "guinea-bissau", "guyana", "haiti", "honduras", "hungary", "iceland", "india",
+  "indonesia", "iran", "iraq", "ireland", "israel", "italy", "jamaica", "japan",
+  "jordan", "kazakhstan", "kenya", "kiribati", "korea, north", "korea, south",
+  "kosovo", "kuwait", "kyrgyzstan", "laos", "latvia", "lebanon", "lesotho",
+  "liberia", "libya", "liechtenstein", "lithuania", "luxembourg", "madagascar",
+  "malawi", "malaysia", "maldives", "mali", "malta", "marshall islands",
+  "mauritania", "mauritius", "mexico", "micronesia, federated states of",
+  "moldova", "monaco", "mongolia", "montenegro", "morocco", "mozambique",
+  "myanmar (burma)", "namibia", "nauru", "nepal", "netherlands", "new zealand",
+  "nicaragua", "niger", "nigeria", "north macedonia", "norway", "oman", "pakistan",
+  "palau", "panama", "papua new guinea", "paraguay", "peru", "philippines", "poland",
+  "portugal", "qatar", "romania", "russia", "rwanda", "saint kitts and nevis",
+  "saint lucia", "saint vincent and the grenadines", "samoa", "san marino",
+  "sao tome and principe", "saudi arabia", "senegal", "serbia", "seychelles",
+  "sierra leone", "singapore", "slovakia", "slovenia", "solomon islands", "somalia",
+  "south africa", "spain", "sri lanka", "sudan", "sudan, south", "suriname", "sweden",
+  "switzerland", "syria", "taiwan", "tajikistan", "tanzania", "thailand", "togo",
+  "tonga", "trinidad and tobago", "tunisia", "turkey", "turkmenistan", "tuvalu",
+  "uganda", "ukraine", "united arab emirates", "united kingdom", "united states",
+  "uruguay", "uzbekistan", "vanuatu", "vatican city", "venezuela", "vietnam", "yemen",
+  "zambia", "zimbabwe"
 ];
 
 
 
-function randomWord() {
-  return PROGRAMING_LANG[Math.floor(Math.random() * PROGRAMING_LANG.length)];
-}
-
 function randomWordEasy(wordArray){
   while(1){
-     var word = wordArray[Math.floor(Math.random() * PROGRAMING_LANG.length)];
+     var word = wordArray[Math.floor(Math.random() * wordArray.length)];
   if(word.length<=4){
       return word
     }else{
@@ -132,7 +128,7 @@ function randomWordEasy(wordArray){
 
 function randomWordMedium(wordArray){
   while(1){
-    var word = wordArray[Math.floor(Math.random() * PROGRAMING_LANG.length)];
+    var word = wordArray[Math.floor(Math.random() * wordArray.length)];
   if(word.length>4&&word.length<=6){
       return word
     }else{
@@ -143,7 +139,7 @@ function randomWordMedium(wordArray){
 
 function randomWordHard(wordArray){
   while(1){
-    var word = wordArray[Math.floor(Math.random() * PROGRAMING_LANG.length)];
+    var word = wordArray[Math.floor(Math.random() * wordArray.length)];
   if(word.length>6){
       return word
     }else{

@@ -7,10 +7,15 @@ import Hangman from './Hangman';
 export default function Homepage() {
   const [showHangman, setShowHangman] = useState(false);
   const [difficultyLevel, setDifficultyLevel] = useState('');
+  const [category, setCategory] = useState('');
 
   const startHangman = (level) => {
     setDifficultyLevel(level);
     setShowHangman(true);
+  };
+
+  const selectCat = (Category) =>{
+    setCategory(Category);
   };
 
  
@@ -58,19 +63,19 @@ export default function Homepage() {
             <button
               id='Easy'
               className="Hangman-reset mx-2 animated-button"
-              onClick={() => startHangman('Easy')}>
+              onClick={() => selectCat('Animal')}>
               Animal
             </button>
             <button
               id='Medium'
               className="Hangman-reset mx-2 animated-button"
-              onClick={() => startHangman('Medium')}>
+              onClick={() => selectCat('Programming')}>
               Program Lang
             </button>
             <button
               id='Hard'
               className="Hangman-reset mx-2 animated-button"
-              onClick={() => startHangman('Hard')}>
+              onClick={() => selectCat('Country')}>
               Country
             </button>
             </>
@@ -130,7 +135,7 @@ export default function Homepage() {
                     <li></li>
             </ul>
           )}
-        {showHangman && <Hangman difficultyLevel={difficultyLevel} />}
+        {showHangman && <Hangman difficultyLevel={difficultyLevel} category ={category} />}
     </div>
   );
   
