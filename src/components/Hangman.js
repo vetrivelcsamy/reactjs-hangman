@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { randomWord, randomWordEasy, randomWordMedium, randomWordHard } from "./words";
+import { PROGRAMING_LANG,ANIMAL_ARRAY,COUNTRY_ARRAY, randomWordEasy, randomWordMedium, randomWordHard } from "./words";
 
 import step0 from "./images/0.jpg";
 import step1 from "./images/1.jpg";
@@ -11,10 +11,22 @@ import step6 from "./images/6.jpg";
 
 let st_game;
 let gameStat;
+let Category;
 let states;
 let state;
 var hint;
 class Hangman extends Component {
+  
+  Choose_Category(input){
+    if(input === "Programming"){
+      Category = PROGRAMING_LANG;
+    }else if(input === "Programming"){
+      Category = ANIMAL_ARRAY;
+    }else if(input === "Programming"){
+      Category = COUNTRY_ARRAY;
+    }
+    return Category;
+  }
 
   Choose_level(level) {
     if (level === "Easy") {
