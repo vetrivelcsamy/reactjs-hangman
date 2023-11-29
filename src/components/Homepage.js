@@ -8,6 +8,8 @@ export default function Homepage() {
   const [showHangman, setShowHangman] = useState(false);
   const [difficultyLevel, setDifficultyLevel] = useState('');
   const [category, setCategory] = useState('');
+  const [selectedImage, setSelectedImage] = useState('');
+
 
   const startHangman = (level) => {
     setDifficultyLevel(level);
@@ -17,6 +19,12 @@ export default function Homepage() {
   const selectCat = (Category) =>{
     setCategory(Category);
   };
+
+  const selectImg = (image) =>{
+    setSelectedImage(image);
+  }
+
+  
 
  
   
@@ -47,7 +55,6 @@ export default function Homepage() {
           </div>
         )}
 
-          
 {!showHangman && (
             <div
             style={{
@@ -57,6 +64,37 @@ export default function Homepage() {
               justifyContent: "center",
               alignItems: "center",
             }}
+            
+
+          >
+            <button
+              id='Easy'
+              className="Hangman-reset mx-2 animated-button"
+              onClick={() => selectImg('pic1')}>
+              picture 1
+            </button>
+            <button
+              id='Easy'
+              className="Hangman-reset mx-2 animated-button"
+              onClick={() => selectImg('pic2')}>
+              Picture 2
+            </button>
+            
+                
+            </div>
+              
+          )}         
+
+{!showHangman && selectedImage !== "" &&(
+            <div
+            style={{
+              marginTop: 30 ,
+              display: 'flex' ,
+              gap: 50,
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+            
 
           >
             <>
@@ -83,7 +121,8 @@ export default function Homepage() {
             </div>
               
           )}
-{!showHangman && category != "" && (
+
+{!showHangman && category !== "" && (
             <div
             style={{
               display: 'flex' ,
@@ -134,7 +173,7 @@ export default function Homepage() {
                     <li></li>
             </ul>
           )}
-        {showHangman && <Hangman difficultyLevel={difficultyLevel} category ={category} />}
+        {showHangman && <Hangman difficultyLevel={difficultyLevel} category ={category} selectedImage={selectedImage}/>}
     </div>
   );
   
