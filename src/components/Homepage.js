@@ -51,6 +51,7 @@ export default function Homepage() {
 {!showHangman && (
             <div
             style={{
+              padding: 30,
               marginTop: 30 ,
               display: 'flex' ,
               gap: 50,
@@ -64,27 +65,26 @@ export default function Homepage() {
               id='Easy'
               className="Hangman-reset mx-2 animated-button"
               onClick={() => selectCat('Animal')}>
-              Animal
+              Animal🐻
             </button>
             <button
               id='Medium'
-              className="Hangman-reset mx-2 animated-button"
+              className="Hangman-reset2 mx-2 animated-button"
               onClick={() => selectCat('Programming')}>
-              Program Lang
+              Computer Lang👨🏿‍💻
             </button>
             <button
               id='Hard'
               className="Hangman-reset mx-2 animated-button"
               onClick={() => selectCat('Country')}>
-              Country
+              Country🌎
             </button>
             </>
                 
             </div>
               
           )}
-
-{!showHangman && (
+{!showHangman && category != "" && (
             <div
             style={{
               display: 'flex' ,

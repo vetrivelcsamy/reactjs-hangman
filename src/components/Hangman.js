@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { PROGRAMING_LANG,ANIMAL_ARRAY,COUNTRY_ARRAY, randomWordEasy, randomWordMedium, randomWordHard } from "./words";
+import { PROGRAMING_LANG, ANIMAL_ARRAY, COUNTRY_ARRAY, randomWordEasy, randomWordMedium, randomWordHard } from "./words";
 
 import step0 from "./images/0.jpg";
 import step1 from "./images/1.jpg";
@@ -16,20 +16,20 @@ let states;
 let state;
 var hint;
 class Hangman extends Component {
-  
-  Choose_Category(input){
+
+  Choose_Category(input) {
     var Category;
-    if(input === "Programming"){
+    if (input === "Programming") {
       Category = PROGRAMING_LANG;
-    }else if(input === "Animal"){
+    } else if (input === "Animal") {
       Category = ANIMAL_ARRAY;
-    }else if(input === "Country"){
+    } else if (input === "Country") {
       Category = COUNTRY_ARRAY;
     }
     return Category;
   }
 
-  Choose_level(level,Category) {
+  Choose_level(level, Category) {
     if (level === "Easy") {
       states = randomWordEasy(Category);
     } else if (level === "Medium") {
@@ -38,7 +38,7 @@ class Hangman extends Component {
       states = randomWordHard(Category);
     }
     cat_game = Category;
-    st_game = level ;
+    st_game = level;
     return states;
   }
 
@@ -50,13 +50,14 @@ class Hangman extends Component {
   constructor(props) {
     super(props);
     const selectedCategory = this.Choose_Category(props.category);
-    const initialWord = this.Choose_level(props.difficultyLevel , selectedCategory );
+    const initialWord = this.Choose_level(props.difficultyLevel, selectedCategory);
     this.state = {
       mistake: 0,
       guessed: new Set(),
       answer: initialWord,
       hintMessage: '',
-      category: props.category
+      category: props.category,
+      hintButtonDisabled: false,
     };
     this.handleGuess = this.handleGuess.bind(this);
     this.keyPress = this.keyPress.bind(this);
@@ -80,7 +81,7 @@ class Hangman extends Component {
   provideHint() {
     const answerSet = new Set(this.state.answer.split(''));
     let availableHints = Array.from(answerSet);
-  
+
     // Remove already guessed letters from available hints
     for (const letter of this.state.guessed) {
       if (availableHints.includes(letter)) {
@@ -95,28 +96,30 @@ class Hangman extends Component {
     } else if (st_game === "Hard") {
       maxHintsAllowed = 4;
     }
-  
+
     if (availableHints.length <= maxHintsAllowed) {
       console.log(`No new hints for ${st_game}`);
-      return; 
+      this.setState({ hintButtonDisabled: true });
+      return;
     }
-  
+
     if (availableHints.length === 0) {
       console.log("No new hints available");
+      this.setState({ hintButtonDisabled: true });
       return; // No new hints available
     }
-  
+
     // Randomly choose a hint from the available ones
     const randomIndex = Math.floor(Math.random() * availableHints.length);
     hint = availableHints[randomIndex];
-  
+
     // Update guessed letters with the new hint
     this.handleGuess(hint);
-  
+
     const hintMessage = `Hint: The word now looks like this - ${hint}`;
     this.setState({ hintMessage });
   }
-  
+
   keyPress(event) {
     /**
      * 8 = backspace
@@ -149,7 +152,7 @@ class Hangman extends Component {
   generateButtons() {
     return "abcdefghijklmnopqrstuvwxyz".split("").map((letter) => (
       <button
-      className="Hangman-word animated-button"
+        className="Hangman-word animated-button"
         key={letter}
         value={letter}
         onClick={(e) => this.handleGuess(e.target.value)}
@@ -159,7 +162,7 @@ class Hangman extends Component {
       </button>
     ));
   }
-  
+
   showCategory = () => {
     switch (this.state.category) {
       case "Programming":
@@ -177,7 +180,8 @@ class Hangman extends Component {
     this.setState({
       mistake: 0,
       guessed: new Set(),
-      answer: this.Choose_level(st_game,cat_game),
+      answer: this.Choose_level(st_game, cat_game),
+      hintButtonDisabled: false,
     });
   };
 
@@ -202,12 +206,12 @@ class Hangman extends Component {
             Hangman. <small>Do (or) 💀</small>
           </a>
 
-          <span className="d-xl-none d-lg-none text-primary">
-            Guessed wrong: {mistake}
-          </span>
+          <h3><span className="d-xl-none d-lg-none text-primary">
+            Remaining Lives: {maxWrong - mistake}
+          </span></h3>
 
           <p className="text-center animated-button">
-            <button className="Hangman-hint" onClick={() => this.provideHint()}>
+            <button className="Hangman-hint" onClick={() => this.provideHint()} disabled={this.state.hintButtonDisabled} >
               Hint
             </button>
           </p>
@@ -230,9 +234,9 @@ class Hangman extends Component {
               <li className="nav-item"></li>
               <li className="nav-item"></li>
             </ul>
-            <span className="navbar-text text-primary">
-              Guessed wrong: {mistake}
-            </span>
+            <h3><span className="navbar-text text-primary">
+            Remaining Lives: {maxWrong - mistake}
+            </span></h3>
           </div>
         </nav>
         <p className="text-center">

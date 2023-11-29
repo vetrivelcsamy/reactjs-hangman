@@ -22,6 +22,10 @@ body {
   height: 350px;
 }
 
+.text-primary h3{
+  color: var(--level-color);
+}
+
 .Hangman h1 {
   font-size: 3rem;
   font-weight: 400;
@@ -67,6 +71,28 @@ body {
   box-shadow: 0 0 40px var(--main-color);
   z-index: 3;
 }
+
+.Hangman-reset2 {
+  color: var(--hash-color); 
+  box-shadow: 0 5px var(--main-color) !important;
+  width: 17.5rem !important;
+  background-color: var(--main-color) ; 
+  border-color: var(--main-color);
+  box-shadow: 0 0 40px var(--main-color);
+  z-index: 3;
+}
+
+.Hangman-reset3 {
+  color: var(--hash-color);
+  box-shadow: 0 5px var(--main-color) !important;
+  width: 10rem !important;
+  background-color: var(--main-color);
+  border-color: var(--main-color);
+  box-shadow: 0 0 40px var(--main-color);
+  z-index: 3;
+}
+
+
 .Hangman-reset.clicked {
   transition: translateY(10px);
   transform: translateY(10px); 
