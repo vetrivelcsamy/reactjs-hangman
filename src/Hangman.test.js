@@ -10,6 +10,10 @@ let states;
 let state;
 let st_game;
 
+function clearst_game(){
+  st_game = "" ;
+}
+
 function Choose_level(level){
   if(level === "Easy"){
     states = randomWordEasy()
@@ -21,7 +25,6 @@ function Choose_level(level){
 
   st_game = level;
   return states;
-
 };
 
 function provideHint(answer, guessed) {
@@ -34,10 +37,25 @@ function provideHint(answer, guessed) {
     }
   }
 
-  if (availableHints.length === 0) {
-    return null; // ไม่มีตัวชี้แนะใหม่ที่ใช้ได้
+  let maxHintsAllowed = 0;
+  if (st_game === "Easy") {
+    maxHintsAllowed = 2;
+  } else if (st_game === "Medium") {
+    maxHintsAllowed = 3;
+  } else if (st_game === "Hard") {
+    maxHintsAllowed = 4;
   }
 
+  if (availableHints.length <= maxHintsAllowed) {
+    console.log(`No new hints for ${st_game}`);
+    return; 
+  }
+
+  if (availableHints.length === 0) {
+    console.log("No new hints available");
+    return; // No new hints available
+  }
+  
   const randomIndex = Math.floor(Math.random() * availableHints.length);
   const hint = availableHints[randomIndex];
 
@@ -45,7 +63,7 @@ function provideHint(answer, guessed) {
 }
 
 
-it('S1-Tc1 : Change to Easy Mode', () => {
+test('S1-Tc1 : Change to Easy Mode', () => {
   const div = document.createElement('div');
   ReactDOM.render(<Homepage />, div);
   var level = "Easy";
@@ -54,7 +72,7 @@ it('S1-Tc1 : Change to Easy Mode', () => {
   expect(result).toString();
 });
 
-it('S1-Tc2 : Change to Medium Mode', () => {
+test('S1-Tc2 : Change to Medium Mode', () => {
   const div = document.createElement('div');
   ReactDOM.render(<Homepage />, div);
   var level = "Medium";
@@ -63,7 +81,7 @@ it('S1-Tc2 : Change to Medium Mode', () => {
   expect(result).toString();
 });
 
-it('S1-Tc3 : Change to Hard Mode', () => {
+test('S1-Tc3 : Change to Hard Mode', () => {
   const div = document.createElement('div');
   ReactDOM.render(<Homepage />, div);
   var level = "Hard";
@@ -72,7 +90,7 @@ it('S1-Tc3 : Change to Hard Mode', () => {
   expect(result).toString();
 });
 
-it('S1-Tc4 : If Select Difficulty You can play', () => {
+test('S1-Tc4 : If Select Difficulty You can play', () => {
   const div = document.createElement('div');
   ReactDOM.render(<Hangman difficultyLevel="Easy" />, div);
   ReactDOM.render(<Hangman difficultyLevel="Medium" />, div);
@@ -80,7 +98,7 @@ it('S1-Tc4 : If Select Difficulty You can play', () => {
   expect.anything();
 });
 
-it('S1-Tc5 : Resets the game', async () => {
+test('S1-Tc5 : Resets the game', async () => {
   const div = document.createElement('div');
   ReactDOM.render(<Hangman difficultyLevel="Easy" />, div);
 
@@ -113,7 +131,7 @@ it('S1-Tc5 : Resets the game', async () => {
   expect(updatedHangmanWord.textContent).toContain('_');
 });
 
-it('S1-Tc1,Tc2,Tc3 : Correctly guesses a letter', () => {
+test('S1-Tc1,Tc2,Tc3 : Correctly guesses a letter', () => {
   const div = document.createElement('div');
   ReactDOM.render(<Hangman difficultyLevel="Easy" />, div);
 
@@ -136,9 +154,10 @@ it('S1-Tc1,Tc2,Tc3 : Correctly guesses a letter', () => {
   expect(hangmanWord.textContent).toContain(wordToGuess);
 });
 
-it('S3-Tc1 : Giveing 1 hint to player', () => {
+test('S3-Tc1: Giving 1 hint to player', () => {
   const answer = 'HELLO';
   const guessed = new Set(['H', 'E', 'L']);
+  clearst_game() ;
 
   const hint = provideHint(answer, guessed);
 
@@ -161,18 +180,22 @@ test('S3-Tc2 : Cannot use "Hint" Button after Lose a game', () => {
   expect(hint).toBeNull();
 });
 
-test('S3-Tc3 : Cannot use "Hint" Button after Win a game', () => {
+test('S3-Tc3: Cannot use "Hint" Button after Win a game', () => {
   const answer = 'apple';
   const guessed = ['a', 'p', 'l', 'e'];
 
+  Choose_level("Easy");
+
   const hint = provideHint(answer, guessed);
 
-  expect(hint).toBeNull();
+  expect(hint).toBeUndefined();
 });
 
 
 
-it('System Test : navigates back to homepage from Hangman', () => {
+
+
+test('System Test : navigates back to homepage from Hangman', () => {
   const div = document.createElement('div');
   ReactDOM.render(<Hangman difficultyLevel="Easy" />, div);
 
@@ -186,3 +209,36 @@ it('System Test : navigates back to homepage from Hangman', () => {
   const homepageTitle = div.querySelector('.navbar-brand');
   expect(homepageTitle.textContent).toContain('Hangman');
 });
+
+test("S6-Tc1 : can't give hint in easy mode", () => {
+  const answer = 'dog';
+  const guessed = ['d' ];
+  clearst_game() ;
+  Choose_level("Easy") ;
+
+  const hint = provideHint(answer,guessed) ;
+
+  expect(hint).toBeUndefined();
+})
+
+test("S6-Tc2 : can't give hint in Medium mode", () => {
+  const answer = 'nisuma';
+  const guessed = ['n','i','s'];
+  clearst_game() ;
+  Choose_level("Medium") ;
+
+  const hint = provideHint(answer,guessed) ;
+
+  expect(hint).toBeUndefined();
+})
+
+test("S6-Tc3 : can't give hint in Hard mode", () => {
+  const answer = 'aoifuka';
+  const guessed = ['a','o','i'];
+  clearst_game() ;
+  Choose_level("Hard") ;
+
+  const hint = provideHint(answer,guessed) ;
+
+  expect(hint).toBeUndefined();
+})
