@@ -12,6 +12,7 @@ import step6 from "./images/6.jpg";
 let st_game;
 let gameStat;
 let states;
+let state;
 var hint;
 class Hangman extends Component {
 
@@ -70,9 +71,22 @@ class Hangman extends Component {
         availableHints = availableHints.filter((hint) => hint !== letter);
       }
     }
+    let maxHintsAllowed = 0;
+    if (st_game === "Easy") {
+      maxHintsAllowed = 2;
+    } else if (st_game === "Medium") {
+      maxHintsAllowed = 3;
+    } else if (st_game === "Hard") {
+      maxHintsAllowed = 4;
+    }
+  
+    if (availableHints.length <= maxHintsAllowed) {
+      console.log(`No new hints for ${st_game}`);
+      return; 
+    }
   
     if (availableHints.length === 0) {
-      console.log("No new hints available.");
+      console.log("No new hints available");
       return; // No new hints available
     }
   
@@ -119,6 +133,7 @@ class Hangman extends Component {
   generateButtons() {
     return "abcdefghijklmnopqrstuvwxyz".split("").map((letter) => (
       <button
+      className="Hangman-word animated-button"
         key={letter}
         value={letter}
         onClick={(e) => this.handleGuess(e.target.value)}
@@ -154,16 +169,16 @@ class Hangman extends Component {
     return (
       <div className="Hangman">
         <nav className="navbar navbar-expand-lg">
-          <a className="navbar-brand text-light" href="/">
-            Hangman. <small>Do (or) Die</small>
+          <a className="navbar-brand text-light animated-button" href="/">
+            Hangman. <small>Do (or) 💀</small>
           </a>
 
           <span className="d-xl-none d-lg-none text-primary">
             Guessed wrong: {mistake}
           </span>
 
-          <p className="text-center">
-            <button className="hint" onClick={() => this.provideHint()}>
+          <p className="text-center animated-button">
+            <button className="Hangman-hint" onClick={() => this.provideHint()}>
               Hint
             </button>
           </p>
@@ -204,8 +219,8 @@ class Hangman extends Component {
         <p className="text-center text-warning mt-4">{gameStat}</p>
 
         <div>
-          <p className="text-center">
-            <button className="Hangman-reset" onClick={this.resetButton}>
+          <p className="text-center ">
+            <button className="Hangman-reset animated-button" onClick={this.resetButton}>
               Reset
             </button>
           </p>
