@@ -19,6 +19,7 @@ export default function Homepage() {
 
 
     <div className="Hangman">
+
       {/* อย่าลืมใส่ !showHangman ถ้าลืมจะติดหน้าเล่นเกม */}
         {!showHangman }
 
@@ -91,9 +92,7 @@ export default function Homepage() {
                     <li></li>
             </ul>
           )}
-
         {showHangman && <Hangman difficultyLevel={difficultyLevel} />}
-      
     </div>
   );
   

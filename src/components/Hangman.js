@@ -71,9 +71,22 @@ class Hangman extends Component {
         availableHints = availableHints.filter((hint) => hint !== letter);
       }
     }
+    let maxHintsAllowed = 0;
+    if (st_game === "Easy") {
+      maxHintsAllowed = 2;
+    } else if (st_game === "Medium") {
+      maxHintsAllowed = 3;
+    } else if (st_game === "Hard") {
+      maxHintsAllowed = 4;
+    }
+  
+    if (availableHints.length <= maxHintsAllowed) {
+      console.log(`No new hints for ${st_game}`);
+      return; 
+    }
   
     if (availableHints.length === 0) {
-      console.log("No new hints available.");
+      console.log("No new hints available");
       return; // No new hints available
     }
   
