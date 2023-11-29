@@ -11,6 +11,15 @@ let state;
 let st_game;
 let cat_game ;
 
+function handleImageSelection(selectedImage){
+  let imagesArray = [];
+  if (selectedImage === 'pic1') {
+    imagesArray = "PIC1" ;
+  } else {
+    imagesArray = "PIC2";
+  }
+  return imagesArray;
+}
 function setst_game(level){
   st_game = level ;
 }
@@ -334,6 +343,19 @@ describe('Story 3 Testcase 1,2,3 ',() =>{
 
 })
 
+describe('Story 5 Testcase 1,2',() =>{
+  
+  it("S5-Tc1 : select picture1",() =>{
+    const selectedImage = 'pic1';
+    const result = handleImageSelection(selectedImage);
+    expect(result).toBe("PIC1")
+  })
+  it("S5-Tc2 : select picture2",() =>{
+    const selectedImage = 'pic2';
+    const result = handleImageSelection(selectedImage);
+    expect(result).toBe("PIC2")
+  })
+})
 describe('Story 6 Testcase 1,2,3 ',() =>{
 
   it("S6-Tc1 : can't give hint in easy mode", () => {
