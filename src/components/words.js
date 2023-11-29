@@ -71,7 +71,7 @@ const ANIMAL_ARRAY = [
   "sheep", "meerkat", "mouse", "otter",
   "sloth", "owl", "vulture", "flamingo",
   "raccoon", "mole", "duck", "swan",
-  "lynx", "monitor lizard", "elk", "boar",
+  "lynx", "elk", "boar",
   "lemur", "mule", "baboon", "mammoth", "rat", "snake", "peacock"
 ];
 
