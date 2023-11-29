@@ -81,6 +81,7 @@ test('S1-Tc2 : Change to Medium Mode', () => {
   expect(result).toString();
 });
 
+
 test('S1-Tc3 : Change to Hard Mode', () => {
   const div = document.createElement('div');
   ReactDOM.render(<Homepage />, div);
@@ -130,6 +131,7 @@ test('S1-Tc5 : Resets the game', async () => {
   // Check if the reset has removed underscores (i.e., the game has reset)
   expect(updatedHangmanWord.textContent).toContain('_');
 });
+
 
 test('S1-Tc1,Tc2,Tc3 : Correctly guesses a letter', () => {
   const div = document.createElement('div');
@@ -190,10 +192,6 @@ test('S3-Tc3: Cannot use "Hint" Button after Win a game', () => {
 
   expect(hint).toBeUndefined();
 });
-
-
-
-
 
 test('System Test : navigates back to homepage from Hangman', () => {
   const div = document.createElement('div');
