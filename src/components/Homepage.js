@@ -63,7 +63,7 @@ export default function Homepage() {
             <>
             <button
               id='Easy'
-              className="Hangman-reset mx-2 animated-button"
+              className="Hangman-reset3 mx-2 animated-button"
               onClick={() => selectCat('Animal')}>
               Animal🐻
             </button>
@@ -75,7 +75,7 @@ export default function Homepage() {
             </button>
             <button
               id='Hard'
-              className="Hangman-reset mx-2 animated-button"
+              className="Hangman-reset3 mx-2 animated-button"
               onClick={() => selectCat('Country')}>
               Country🌎
             </button>
