@@ -83,8 +83,7 @@ export default function Homepage() {
             </div>
               
           )}
-
-{!showHangman && (
+{!showHangman && category != "" && (
             <div
             style={{
               display: 'flex' ,
