@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { PROGRAMING_LANG, ANIMAL_ARRAY, COUNTRY_ARRAY, randomWordEasy, randomWordMedium, randomWordHard } from "./words";
 
-import step0 from "./images/0n.png";
-import step1 from "./images/1n.png";
-import step2 from "./images/2n.png";
-import step3 from "./images/3n.png";
-import step4 from "./images/4n.png";
-import step5 from "./images/5n.png";
-import step6 from "./images/6n.png";
+import step0 from "./images/0s.png";
+import step1 from "./images/1s.png";
+import step2 from "./images/2s.png";
+import step3 from "./images/3s.png";
+import step4 from "./images/4s.png";
+import step5 from "./images/5s.png";
+import step6 from "./images/6s.png";
 import step7 from "./images/0.jpg";
 import step8 from "./images/1.jpg";
 import step9 from "./images/2.jpg";
