@@ -24,8 +24,10 @@ export default function Homepage() {
     setSelectedImage(image);
   }
 
-  
-
+  function dropdownlistza() {
+    var x = document.getElementById("picture animated-picture").value;
+    selectImg(x);
+}
  
   
   return (
@@ -45,7 +47,7 @@ export default function Homepage() {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              height: 300,
+              height: 200,
               zIndex: 5
             }}
           >
@@ -68,20 +70,13 @@ export default function Homepage() {
             
 
           >
-            <button
-              id='Easy'
-              className="Hangman-reset mx-2 animated-button"
-              onClick={() => selectImg('pic1')}>
-              picture 1
-            </button>
-            <button
-              id='Easy'
-              className="Hangman-reset mx-2 animated-button"
-              onClick={() => selectImg('pic2')}>
-              Picture 2
-            </button>
-            
-                
+              <h2 for="textpic">Choose a picture:</h2>
+        <select onChange={() => dropdownlistza()} className="picture animated-picture" id="picture animated-picture" name="picture animated-picture">
+          <option value="">Select picture to play</option>
+          <option value="pic1">new pic from paseenza</option>
+          <option value="pic2">old pic</option>
+        </select>
+    
             </div>
               
           )}         
@@ -89,7 +84,7 @@ export default function Homepage() {
 {!showHangman && selectedImage !== "" &&(
             <div
             style={{
-              marginTop: 30 ,
+              marginTop: 50 ,
               display: 'flex' ,
               gap: 50,
               justifyContent: "center",
@@ -123,7 +118,7 @@ export default function Homepage() {
               
           )}
 
-{!showHangman && category !== "" && (
+{!showHangman && category !== "" && selectedImage !== "" &&(
             <div
             style={{
               display: 'flex' ,
