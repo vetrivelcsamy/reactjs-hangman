@@ -70,7 +70,7 @@ export default function Homepage() {
             
 
           >
-              <h2 for="textpic">Choose a picture:</h2>
+              <h2>Choose a picture:</h2>
         <select onChange={() => dropdownlistza()} className="picture animated-picture" id="picture animated-picture" name="picture animated-picture">
           <option value="">Select picture to play</option>
           <option value="pic1">new pic from paseenza</option>
