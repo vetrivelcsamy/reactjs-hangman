@@ -254,7 +254,7 @@ describe('Story 1 Testcase 5 | Story 2 Testcase 11',() =>{
 
 describe('Story 1 Testcase 1,2,3 | Story 2 Testcase 1,2,3,4,5,6,7,8,9 ',() =>{
 
-  it('S1-Tc1,Tc2,Tc3 , S2-Tc1,Tc2,Tc3,Tc4,Tc5,Tc6,Tc7,Tc8,Tc9, : Correctly guesses a letter "Easy , Programming ยังไม่เสร็จ"', () => {
+  it('S1-Tc1, S2-Tc1 : Correctly guesses a letter "Easy , Programming"', () => {
     const div = document.createElement('div');
     ReactDOM.render(<Hangman difficultyLevel="Easy" category="Programming" />, div);
   
@@ -276,7 +276,53 @@ describe('Story 1 Testcase 1,2,3 | Story 2 Testcase 1,2,3,4,5,6,7,8,9 ',() =>{
   
     expect(hangmanWord.textContent).toContain(wordToGuess);
   });
-  it('S1-Tc1, S2-Tc4 : Correctly guesses a letter "Easy , Animal ยังไม่เสร็จ ทำต่อพรุ่งนีร้ไอสั้ส"', () => {
+  it('S1-Tc2, S2-Tc2 : Correctly guesses a letter "Medium , Programming"', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(<Hangman difficultyLevel="Medium" category="Programming" />, div);
+  
+    const hangmanComponent = div.querySelector('.Hangman');
+    const hangmanWord = div.querySelector('.Hangman-word');
+    const buttons = div.querySelectorAll('button');
+  
+    const wordToGuess = hangmanWord.textContent.trim();
+    const uniqueLetters = new Set(wordToGuess.split(''));
+  
+    uniqueLetters.forEach((letter) => {
+      const button = [...buttons].find((btn) => btn.textContent === letter);
+      if (button) {
+        act(() => {
+          button.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+        });
+      }
+    });
+  
+    expect(hangmanWord.textContent).toContain(wordToGuess);
+
+  });
+  it('S1-Tc3, S2-Tc3 : Correctly guesses a letter "Hard , Programming"', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(<Hangman difficultyLevel="Hard" category="Programming" />, div);
+  
+    const hangmanComponent = div.querySelector('.Hangman');
+    const hangmanWord = div.querySelector('.Hangman-word');
+    const buttons = div.querySelectorAll('button');
+  
+    const wordToGuess = hangmanWord.textContent.trim();
+    const uniqueLetters = new Set(wordToGuess.split(''));
+  
+    uniqueLetters.forEach((letter) => {
+      const button = [...buttons].find((btn) => btn.textContent === letter);
+      if (button) {
+        act(() => {
+          button.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+        });
+      }
+    });
+  
+    expect(hangmanWord.textContent).toContain(wordToGuess);
+
+  });
+  it('S1-Tc1, S2-Tc4 : Correctly guesses a letter "Easy , Animal"', () => {
     const div = document.createElement('div');
     ReactDOM.render(<Hangman difficultyLevel="Easy" category="Animal" />, div);
   
@@ -297,6 +343,122 @@ describe('Story 1 Testcase 1,2,3 | Story 2 Testcase 1,2,3,4,5,6,7,8,9 ',() =>{
     });
   
     expect(hangmanWord.textContent).toContain(wordToGuess);
+
+  });
+  it('S1-Tc2, S2-Tc5 : Correctly guesses a letter "Medium , Animal"', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(<Hangman difficultyLevel="Medium" category="Animal" />, div);
+  
+    const hangmanComponent = div.querySelector('.Hangman');
+    const hangmanWord = div.querySelector('.Hangman-word');
+    const buttons = div.querySelectorAll('button');
+  
+    const wordToGuess = hangmanWord.textContent.trim();
+    const uniqueLetters = new Set(wordToGuess.split(''));
+  
+    uniqueLetters.forEach((letter) => {
+      const button = [...buttons].find((btn) => btn.textContent === letter);
+      if (button) {
+        act(() => {
+          button.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+        });
+      }
+    });
+  
+    expect(hangmanWord.textContent).toContain(wordToGuess);
+
+  });
+  it('S1-Tc3, S2-Tc6 : Correctly guesses a letter "Hard , Animal"', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(<Hangman difficultyLevel="Hard" category="Animal" />, div);
+  
+    const hangmanComponent = div.querySelector('.Hangman');
+    const hangmanWord = div.querySelector('.Hangman-word');
+    const buttons = div.querySelectorAll('button');
+  
+    const wordToGuess = hangmanWord.textContent.trim();
+    const uniqueLetters = new Set(wordToGuess.split(''));
+  
+    uniqueLetters.forEach((letter) => {
+      const button = [...buttons].find((btn) => btn.textContent === letter);
+      if (button) {
+        act(() => {
+          button.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+        });
+      }
+    });
+  
+    expect(hangmanWord.textContent).toContain(wordToGuess);
+
+  });
+  it('S1-Tc1, S2-Tc7 : Correctly guesses a letter "Easy , Country"', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(<Hangman difficultyLevel="Easy" category="Country" />, div);
+  
+    const hangmanComponent = div.querySelector('.Hangman');
+    const hangmanWord = div.querySelector('.Hangman-word');
+    const buttons = div.querySelectorAll('button');
+  
+    const wordToGuess = hangmanWord.textContent.trim();
+    const uniqueLetters = new Set(wordToGuess.split(''));
+  
+    uniqueLetters.forEach((letter) => {
+      const button = [...buttons].find((btn) => btn.textContent === letter);
+      if (button) {
+        act(() => {
+          button.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+        });
+      }
+    });
+  
+    expect(hangmanWord.textContent).toContain(wordToGuess);
+
+  });
+  it('S1-Tc2, S2-Tc8 : Correctly guesses a letter "Medium , Country"', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(<Hangman difficultyLevel="Medium" category="Country" />, div);
+  
+    const hangmanComponent = div.querySelector('.Hangman');
+    const hangmanWord = div.querySelector('.Hangman-word');
+    const buttons = div.querySelectorAll('button');
+  
+    const wordToGuess = hangmanWord.textContent.trim();
+    const uniqueLetters = new Set(wordToGuess.split(''));
+  
+    uniqueLetters.forEach((letter) => {
+      const button = [...buttons].find((btn) => btn.textContent === letter);
+      if (button) {
+        act(() => {
+          button.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+        });
+      }
+    });
+  
+    expect(hangmanWord.textContent).toContain(wordToGuess);
+
+  });
+  it('S1-Tc3, S2-Tc9 : Correctly guesses a letter "Hard , Country"', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(<Hangman difficultyLevel="Hard" category="Country" />, div);
+  
+    const hangmanComponent = div.querySelector('.Hangman');
+    const hangmanWord = div.querySelector('.Hangman-word');
+    const buttons = div.querySelectorAll('button');
+  
+    const wordToGuess = hangmanWord.textContent.trim();
+    const uniqueLetters = new Set(wordToGuess.split(''));
+  
+    uniqueLetters.forEach((letter) => {
+      const button = [...buttons].find((btn) => btn.textContent === letter);
+      if (button) {
+        act(() => {
+          button.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+        });
+      }
+    });
+  
+    expect(hangmanWord.textContent).toContain(wordToGuess);
+
   });
 
 
