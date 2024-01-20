@@ -110,7 +110,7 @@ const COUNTRY_ARRAY = [
   "zambia", "zimbabwe"
 ];
 
-
+//
 
 function randomWordEasy(wordArray){
   while(1){
