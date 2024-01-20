@@ -8,6 +8,8 @@ export default function Homepage() {
   const [showHangman, setShowHangman] = useState(false);
   const [difficultyLevel, setDifficultyLevel] = useState('');
   const [category, setCategory] = useState('');
+  const [selectedImage, setSelectedImage] = useState('');
+
 
   const startHangman = (level) => {
     setDifficultyLevel(level);
@@ -18,6 +20,14 @@ export default function Homepage() {
     setCategory(Category);
   };
 
+  const selectImg = (image) =>{
+    setSelectedImage(image);
+  }
+
+  function dropdownlistza() {
+    var x = document.getElementById("picture animated-picture").value;
+    selectImg(x);
+}
  
   
   return (
@@ -37,7 +47,7 @@ export default function Homepage() {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              height: 300,
+              height: 200,
               zIndex: 5
             }}
           >
@@ -47,7 +57,6 @@ export default function Homepage() {
           </div>
         )}
 
-          
 {!showHangman && (
             <div
             style={{
@@ -58,12 +67,36 @@ export default function Homepage() {
               justifyContent: "center",
               alignItems: "center",
             }}
+            
+
+          >
+              <h2>Choose a picture:</h2>
+        <select onChange={() => dropdownlistza()} className="picture animated-picture" id="picture animated-picture" name="picture animated-picture">
+          <option value="">Select picture to play</option>
+          <option value="pic1">new pic from paseenza</option>
+          <option value="pic2">old pic</option>
+        </select>
+    
+            </div>
+              
+          )}         
+
+{!showHangman && selectedImage !== "" &&(
+            <div
+            style={{
+              marginTop: 50 ,
+              display: 'flex' ,
+              gap: 50,
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+            
 
           >
             <>
             <button
               id='Easy'
-              className="Hangman-reset mx-2 animated-button"
+              className="Hangman-reset3 mx-2 animated-button"
               onClick={() => selectCat('Animal')}>
               Animal🐻
             </button>
@@ -75,7 +108,7 @@ export default function Homepage() {
             </button>
             <button
               id='Hard'
-              className="Hangman-reset mx-2 animated-button"
+              className="Hangman-reset3 mx-2 animated-button"
               onClick={() => selectCat('Country')}>
               Country🌎
             </button>
@@ -84,7 +117,8 @@ export default function Homepage() {
             </div>
               
           )}
-{!showHangman && category != "" && (
+
+{!showHangman && category !== "" && selectedImage !== "" &&(
             <div
             style={{
               display: 'flex' ,
@@ -135,7 +169,7 @@ export default function Homepage() {
                     <li></li>
             </ul>
           )}
-        {showHangman && <Hangman difficultyLevel={difficultyLevel} category ={category} />}
+        {showHangman && <Hangman difficultyLevel={difficultyLevel} category ={category} selectedImage={selectedImage}/>}
     </div>
   );
   

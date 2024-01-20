@@ -33,6 +33,13 @@ body {
   color: var(--secondary-color);
 }
 
+.Hangman h2 {
+  font-size: 2rem;
+  font-weight: 400;
+  padding-top: 0;
+  color: #345FF7;
+}
+
 .Hangman-word {
   letter-spacing: 1em;
   margin: 0.4em -1em 0.2em 0;
@@ -155,7 +162,7 @@ body {
   list-style: none;
   width: 20px;
   height: 20px;
-  background: rgba(21, 13, 133, 0.719);
+  background: rgba(33, 23, 165, 0.719);
   animation: animate 25s linear infinite;
   bottom: -150px;
   
@@ -235,6 +242,29 @@ body {
   height: 150px;
   animation-delay: 0s;
   animation-duration: 11s;
+}
+
+.picture{
+  color: #07ffc9!important;
+  padding: 1rem;
+  background-color: #ff070700 !important;
+  border-color: #07ffc9;
+  border-radius: 15px;
+  z-index: 3;
+  font-size: 18px;
+
+}
+.picture option{
+  border-radius: 15px;
+  border-color: #07ffc9;
+  background-color: #0c0c13 !important;
+}
+.animated-picture{
+  transition: 0.2s ease-in-out;
+  z-index: 3;
+}
+.animated-picture:active{
+  transform: scale(0.95);
 }
 
 

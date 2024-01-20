@@ -1,19 +1,26 @@
 import React, { Component } from "react";
 import { PROGRAMING_LANG, ANIMAL_ARRAY, COUNTRY_ARRAY, randomWordEasy, randomWordMedium, randomWordHard } from "./words";
 
-import step0 from "./images/0.jpg";
-import step1 from "./images/1.jpg";
-import step2 from "./images/2.jpg";
-import step3 from "./images/3.jpg";
-import step4 from "./images/4.jpg";
-import step5 from "./images/5.jpg";
-import step6 from "./images/6.jpg";
+import step0 from "./images/0n.png";
+import step1 from "./images/1n.png";
+import step2 from "./images/2n.png";
+import step3 from "./images/3n.png";
+import step4 from "./images/4n.png";
+import step5 from "./images/5n.png";
+import step6 from "./images/6n.png";
+import step7 from "./images/0.jpg";
+import step8 from "./images/1.jpg";
+import step9 from "./images/2.jpg";
+import step10 from "./images/3.jpg";
+import step11 from "./images/4.jpg";
+import step12 from "./images/5.jpg";
+import step13 from "./images/6.jpg";
 
 let st_game;
 let gameStat;
 let cat_game;
 let states;
-let state;
+let selectedImage;
 var hint;
 class Hangman extends Component {
 
@@ -44,13 +51,17 @@ class Hangman extends Component {
 
   static defaultProps = {
     maxWrong: 6,
-    images: [step0, step1, step2, step3, step4, step5, step6],
+    images: [],
+
   };
 
   constructor(props) {
     super(props);
+    selectedImage = props.selectedImage;
     const selectedCategory = this.Choose_Category(props.category);
     const initialWord = this.Choose_level(props.difficultyLevel, selectedCategory);
+    
+    
     this.state = {
       mistake: 0,
       guessed: new Set(),
@@ -58,10 +69,23 @@ class Hangman extends Component {
       hintMessage: '',
       category: props.category,
       hintButtonDisabled: false,
+      images: this.handleImageSelection(props.selectedImage),
     };
+    
+
     this.handleGuess = this.handleGuess.bind(this);
     this.keyPress = this.keyPress.bind(this);
     window.addEventListener("keydown", this.keyPress);
+  }
+  
+  handleImageSelection(selectedImage){
+    let imagesArray = [];
+    if (selectedImage === 'pic1') {
+      imagesArray = [step0, step1, step2, step3, step4, step5, step6];
+    } else {
+      imagesArray = [step7, step8, step9, step10, step11, step12, step13];
+    }
+    return imagesArray;
   }
 
   guessedWord() {
@@ -235,12 +259,14 @@ class Hangman extends Component {
               <li className="nav-item"></li>
             </ul>
             <h3><span className="navbar-text text-primary">
-            Remaining Lives: {maxWrong - mistake}
+              Remaining Lives: {maxWrong - mistake}
             </span></h3>
           </div>
         </nav>
         <p className="text-center">
-          <img src={images[mistake]} alt={altText} />
+          {this.state.images && this.state.images[mistake] && (
+            <img src={this.state.images[mistake]} alt={altText} />
+          )}
         </p>
         <p className="text-center text-light">
           Guess the {this.showCategory()} ?

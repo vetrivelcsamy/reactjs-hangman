@@ -76,8 +76,8 @@ const ANIMAL_ARRAY = [
 ];
 
 const COUNTRY_ARRAY = [
-  "afghanistan", "albania", "algeria", "andorra", "angola", "antigua and barbuda",
-  "argentina", "armenia", "australia", "austria", "azerbaijan", "the bahamas",
+  "afghanistan", "albania", "algeria", "andorra", "angola",
+  "argentina", "armenia", "australia", "austria", "azerbaijan",
   "bahrain", "bangladesh", "barbados", "belarus", "belgium", "belize", "benin",
   "bhutan", "bolivia",  "botswana", "brazil", "brunei",
   "bulgaria", "burundi", "cabo verde", "cambodia", "cameroon",
@@ -92,7 +92,7 @@ const COUNTRY_ARRAY = [
   "jordan", "kazakhstan", "kenya", "kiribati", "korea",
   "kosovo", "kuwait", "kyrgyzstan", "laos", "latvia", "lebanon", "lesotho",
   "liberia", "libya", "liechtenstein", "lithuania", "luxembourg", "madagascar",
-  "malawi", "malaysia", "maldives", "mali", "malta", "marshall islands",
+  "malawi", "malaysia", "maldives", "mali", "malta",
   "mauritania", "mauritius", "mexico",
   "moldova", "monaco", "mongolia", "montenegro", "morocco", "mozambique",
   "myanmar", "namibia", "nauru", "nepal", "netherlands",
