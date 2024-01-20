@@ -350,3 +350,4 @@ it('System Test : navigates back to homepage from Hangman', () => {
   const homepageTitle = div.querySelector('.navbar-brand');
   expect(homepageTitle.textContent).toContain('Hangman');
 });
+//
