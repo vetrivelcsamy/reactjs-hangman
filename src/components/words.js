@@ -111,6 +111,8 @@ const COUNTRY_ARRAY = [
 ];
 
 //
+//
+//
 
 function randomWordEasy(wordArray){
   while(1){
