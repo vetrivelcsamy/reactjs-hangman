@@ -107,7 +107,7 @@ const COUNTRY_ARRAY = [
   "tonga",  "tunisia", "turkey", "turkmenistan", "tuvalu",
   "uganda", "ukraine",
   "uruguay", "uzbekistan", "vanuatu", "venezuela", "vietnam", "yemen",
-  
+  "zambia", "zimbabwe"
 ];
 
 
